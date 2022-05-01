@@ -8,7 +8,7 @@ import '../search/search_delegate.dart';
 import '../widgets/movie_horizontal.dart';
 
 class HomePage extends StatelessWidget {
-  final peliculasProvider = new PeliculasProvider();
+  final peliculasProvider = PeliculasProvider();
 
   @override
   Widget build(BuildContext context) {
