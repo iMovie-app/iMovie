@@ -126,34 +126,39 @@ class PeliculaDetalle extends StatelessWidget {
         pageSnapping: false,
         controller: PageController(viewportFraction: 0.3, initialPage: 1),
         itemCount: Actores.length,
-        itemBuilder: (context, i) => _actorTarjeta(Actores[i]),
+        itemBuilder: (context, i) => _actorTarjeta(context, Actores[i]),
       ),
     );
   }
 
-  Widget _actorTarjeta(Actor actor) {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          ClipRRect(
+  //Método para crear la tarjeta de los actores con sus fotos
+  Widget _actorTarjeta(BuildContext context, Actor actor) {
+    final tarjeta = Column(
+      children: <Widget>[
+        Tooltip(
+          message: actor.character,
+          child: ClipRRect(
             borderRadius: BorderRadius.circular(20.0),
             child: FadeInImage(
               image: NetworkImage(actor.getFoto()),
-              placeholder: AssetImage('assets/img/no-image.jpg'),
+              placeholder: const AssetImage('assets/img/no-image.jpg'),
               height: 150.0,
               fit: BoxFit.cover,
             ),
           ),
-          Text(
-            actor.name,
-            overflow: TextOverflow.ellipsis,
-          ),
-          Text(
-            actor.character,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ],
-      ),
+        ),
+        Text(
+          actor.name,
+          overflow: TextOverflow.ellipsis,
+        )
+      ],
+    );
+    return GestureDetector(
+      child: tarjeta,
+      onTap: () {
+        Navigator.pushNamed(context, 'actor', arguments: actor);
+      },
     );
   }
+  
 }
