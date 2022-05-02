@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_swiper_tv: ^1.1.6-nullsafety
   http: ^0.13.4
+  youtube_player_flutter: ^8.0.0
 
 dev_dependencies:
   flutter_test:
