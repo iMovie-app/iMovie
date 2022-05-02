@@ -5,12 +5,15 @@ import 'package:flutter/material.dart';
 import '../models/actores_model.dart';
 import '../models/pelicula_model.dart';
 import '../providers/peliculas_provider.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class PeliculaDetalle extends StatelessWidget {
+  final peliProvider = PeliculasProvider();
   @override
   Widget build(BuildContext context) {
     final Pelicula pelicula =
         ModalRoute.of(context)!.settings.arguments as Pelicula;
+    final peliculasProvider = PeliculasProvider();
 
     return Scaffold(
         body: CustomScrollView(
@@ -24,6 +27,7 @@ class PeliculaDetalle extends StatelessWidget {
             _posterTitulo(context, pelicula),
             _descripcion(pelicula),
             _crearCasting(pelicula),
+            _youtubeTrailer(context, pelicula),
           ]),
         )
       ],
@@ -105,8 +109,6 @@ class PeliculaDetalle extends StatelessWidget {
   }
 
   Widget _crearCasting(Pelicula pelicula) {
-    final peliProvider = new PeliculasProvider();
-
     return FutureBuilder(
       future: peliProvider.getCast(pelicula.id.toString()),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -154,6 +156,33 @@ class PeliculaDetalle extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _youtubeTrailer(BuildContext context, Pelicula pelicula) {
+    return FutureBuilder(
+      future: peliProvider.buscarTrailer(pelicula.id),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.hasData) {
+          return YoutubePlayer(
+            controller: YoutubePlayerController(
+              initialVideoId: snapshot.data,
+              flags: YoutubePlayerFlags(
+                autoPlay: false,
+                mute: false,
+              ),
+            ),
+            showVideoProgressIndicator: true,
+            progressIndicatorColor: Colors.blueAccent,
+            progressColors: ProgressBarColors(
+              playedColor: Colors.amber,
+              handleColor: Colors.amberAccent,
+            ),
+          );
+        } else {
+          return Center(child: CircularProgressIndicator());
+        }
+      },
     );
   }
 }
