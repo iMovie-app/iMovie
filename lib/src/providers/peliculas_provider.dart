@@ -6,13 +6,10 @@ import '../models/actores_model.dart';
 import '../models/pelicula_model.dart';
 import 'package:http/http.dart' as http;
 
-import '../models/video_model.dart';
-
 class PeliculasProvider {
   String _apikey = '8f0c5d6e504bebd18c29c2c3535cec9d';
   String _url = 'api.themoviedb.org';
   String _language = 'es-ES';
-  String _language2 = 'en-US';
 
   int _popularesPage = 0;
   bool _cargando = false;
@@ -90,21 +87,5 @@ class PeliculasProvider {
     });
 
     return await _procesarRespuesta(url);
-  }
-
-  // Trailers providers
-
-  Future<dynamic> buscarTrailer(int movieID) async {
-    final url = Uri.https(_url, '/3/movie/$movieID/videos', {
-      'api_key': _apikey,
-    });
-
-    final resp = await http.get(url);
-    final decodedData = json.decode(resp.body);
-
-    final trailers = Trailers.fromJsonList(decodedData['results']);
-    String? key = trailers.getTrailer();
-
-    return key;
   }
 }
