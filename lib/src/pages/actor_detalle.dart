@@ -24,7 +24,7 @@ class ActorDetalle extends StatelessWidget {
   Widget _crearAppbar(Actor actor) {
     return SliverAppBar(
       elevation: 2.0,
-      backgroundColor: Colors.indigoAccent,
+      backgroundColor: Colors.deepPurple,
       expandedHeight: 200.0,
       floating: false,
       pinned: true,
