@@ -49,6 +49,15 @@ class PeliculasProvider {
     return await _procesarRespuesta(url);
   }
 
+  Future<List<Pelicula>> getSimilarMovies(int id) async {
+    final url = Uri.https(_url, '/3/movie/$id/similar', {
+      'api_key': _apikey,
+      'language': _language,
+    });
+
+    return await _procesarRespuesta(url);
+  }
+
   Future<List<Pelicula>> getPopulares() async {
     if (_cargando) return [];
     _cargando = true;
