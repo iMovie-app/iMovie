@@ -26,7 +26,7 @@ class PeliculaDetalle extends StatelessWidget {
             SizedBox(
               height: 10.0,
             ),
-            _posterTitulo(context, pelicula),
+            posterTitulo(context, pelicula),
             _descripcion(pelicula),
             _youtubeTrailer(context, pelicula),
             _crearCasting(pelicula),
@@ -58,7 +58,7 @@ class PeliculaDetalle extends StatelessWidget {
     );
   }
 
-  Widget _posterTitulo(BuildContext context, Pelicula pelicula) {
+  Widget posterTitulo(BuildContext context, Pelicula pelicula) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: Row(
@@ -118,7 +118,7 @@ class PeliculaDetalle extends StatelessWidget {
       future: peliProvider.getCast(pelicula.id.toString()),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.hasData) {
-          return _crearActoresPageView(snapshot.data);
+          return _crearActoresPageView(snapshot.data, pelicula);
         } else {
           return Center(child: CircularProgressIndicator());
         }
@@ -126,20 +126,21 @@ class PeliculaDetalle extends StatelessWidget {
     );
   }
 
-  Widget _crearActoresPageView(List<Actor> Actores) {
+  Widget _crearActoresPageView(List<Actor> Actores, Pelicula pelicula) {
     return SizedBox(
       height: 200.0,
       child: PageView.builder(
         pageSnapping: false,
         controller: PageController(viewportFraction: 0.3, initialPage: 1),
         itemCount: Actores.length,
-        itemBuilder: (context, i) => _actorTarjeta(context, Actores[i]),
+        itemBuilder: (context, i) =>
+            _actorTarjeta(context, Actores[i], pelicula),
       ),
     );
   }
 
   //Método para crear la tarjeta de los actores con sus fotos
-  Widget _actorTarjeta(BuildContext context, Actor actor) {
+  Widget _actorTarjeta(BuildContext context, Actor actor, Pelicula pelicula) {
     final tarjeta = Column(
       children: <Widget>[
         Tooltip(
@@ -160,10 +161,14 @@ class PeliculaDetalle extends StatelessWidget {
         )
       ],
     );
+
     return GestureDetector(
       child: tarjeta,
       onTap: () {
-        Navigator.pushNamed(context, 'actor', arguments: actor);
+        Navigator.pushNamed(context, 'actor', arguments: {
+          'pelicula': pelicula,
+          'actor': actor,
+        });
       },
     );
   }
