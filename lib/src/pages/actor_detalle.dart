@@ -2,17 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:peliculas_app/src/models/actores_model.dart';
-import 'package:peliculas_app/src/models/pelicula_model.dart';
-import 'package:peliculas_app/src/pages/pelicula_detalle.dart';
 
 class ActorDetalle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
-    final arguments = ModalRoute.of(context)!.settings.arguments as Map;
-    final Actor actor = arguments['actor'];
-    final Pelicula pelicula = arguments['pelicula'];
-        
+    final Actor actor = ModalRoute.of(context)!.settings.arguments as Actor;
 
     return Scaffold(
         body: CustomScrollView(
@@ -21,11 +15,7 @@ class ActorDetalle extends StatelessWidget {
         SliverList(
             delegate: SliverChildListDelegate([
           const SizedBox(height: 10.0),
-          Text("CHARACTER", textAlign: TextAlign.center),
-          _character(actor),
-          PeliculaDetalle().posterTitulo(context, pelicula),
-          _biography(pelicula),
-          
+          _descripcion(actor),
         ]))
       ],
     ));
@@ -54,7 +44,7 @@ class ActorDetalle extends StatelessWidget {
     );
   }
 
-  Widget _character(Actor actor) {
+  Widget _descripcion(Actor actor) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
       child: Text(
@@ -65,17 +55,4 @@ class ActorDetalle extends StatelessWidget {
       ),
     );
   }
-
-  Widget _biography(Pelicula pelicula) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-      child: Text(
-        pelicula.overview,
-        textAlign: TextAlign.justify,
-      ),
-    );
-  }
-
- 
-  
 }

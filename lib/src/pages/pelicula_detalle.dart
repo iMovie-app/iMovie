@@ -26,7 +26,7 @@ class PeliculaDetalle extends StatelessWidget {
             SizedBox(
               height: 10.0,
             ),
-            posterTitulo(context, pelicula),
+            _posterTitulo(context, pelicula),
             _descripcion(pelicula),
             _youtubeTrailer(context, pelicula),
             _crearCasting(pelicula),
@@ -58,7 +58,7 @@ class PeliculaDetalle extends StatelessWidget {
     );
   }
 
-  Widget posterTitulo(BuildContext context, Pelicula pelicula) {
+  Widget _posterTitulo(BuildContext context, Pelicula pelicula) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 20.0),
       child: Row(
@@ -118,7 +118,7 @@ class PeliculaDetalle extends StatelessWidget {
       future: peliProvider.getCast(pelicula.id.toString()),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.hasData) {
-          return _crearActoresPageView(snapshot.data, pelicula);
+          return _crearActoresPageView(snapshot.data);
         } else {
           return Center(child: CircularProgressIndicator());
         }
@@ -126,21 +126,20 @@ class PeliculaDetalle extends StatelessWidget {
     );
   }
 
-  Widget _crearActoresPageView(List<Actor> Actores, Pelicula pelicula) {
+  Widget _crearActoresPageView(List<Actor> Actores) {
     return SizedBox(
       height: 200.0,
       child: PageView.builder(
         pageSnapping: false,
         controller: PageController(viewportFraction: 0.3, initialPage: 1),
         itemCount: Actores.length,
-        itemBuilder: (context, i) =>
-            _actorTarjeta(context, Actores[i], pelicula),
+        itemBuilder: (context, i) => _actorTarjeta(context, Actores[i]),
       ),
     );
   }
 
   //Método para crear la tarjeta de los actores con sus fotos
-  Widget _actorTarjeta(BuildContext context, Actor actor, Pelicula pelicula) {
+  Widget _actorTarjeta(BuildContext context, Actor actor) {
     final tarjeta = Column(
       children: <Widget>[
         Tooltip(
@@ -161,14 +160,10 @@ class PeliculaDetalle extends StatelessWidget {
         )
       ],
     );
-
     return GestureDetector(
       child: tarjeta,
       onTap: () {
-        Navigator.pushNamed(context, 'actor', arguments: {
-          'pelicula': pelicula,
-          'actor': actor,
-        });
+        Navigator.pushNamed(context, 'actor', arguments: actor);
       },
     );
   }
@@ -231,4 +226,46 @@ class PeliculaDetalle extends StatelessWidget {
     );
   }
 
+  Widget _crearSimilarPageView(List<Pelicula> peliculas) {
+    return SizedBox(
+      height: 200.0,
+      child: PageView.builder(
+        pageSnapping: false,
+        controller: PageController(viewportFraction: 0.3, initialPage: 1),
+        itemCount: peliculas.length,
+        itemBuilder: (context, i) => _similarTarjeta(context, peliculas[i]),
+      ),
+    );
+  }
+
+  Widget _similarTarjeta(BuildContext context, Pelicula pelicula) {
+    pelicula.uniqueId = '${pelicula.id}-similar';
+
+    final tarjeta = Column(
+      children: <Widget>[
+        Tooltip(
+          message: pelicula.title,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: FadeInImage(
+              image: NetworkImage(pelicula.getPosterImg()),
+              placeholder: const AssetImage('assets/img/no-image.jpg'),
+              height: 150.0,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+        Text(
+          pelicula.title,
+          overflow: TextOverflow.ellipsis,
+        )
+      ],
+    );
+    return GestureDetector(
+      child: tarjeta,
+      onTap: () {
+        Navigator.pushNamed(context, 'detalle', arguments: pelicula);
+      },
+    );
+  }
 }
