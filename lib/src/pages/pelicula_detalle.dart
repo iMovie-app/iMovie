@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import 'package:peliculas_app/src/widgets/card_swiper_widget.dart';
+import 'package:peliculas_app/src/widgets/movie_horizontal.dart';
 
 import '../models/actores_model.dart';
 import '../models/pelicula_model.dart';
@@ -26,8 +28,9 @@ class PeliculaDetalle extends StatelessWidget {
             ),
             posterTitulo(context, pelicula),
             _descripcion(pelicula),
-            _crearCasting(pelicula),
             _youtubeTrailer(context, pelicula),
+            _crearCasting(pelicula),
+            _similarMovies(pelicula),
           ]),
         )
       ],
@@ -171,29 +174,61 @@ class PeliculaDetalle extends StatelessWidget {
   }
 
   Widget _youtubeTrailer(BuildContext context, Pelicula pelicula) {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
+      width: double.infinity,
+      child: Column(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+            child: Text(
+              'Trailer',
+              style: Theme.of(context).textTheme.headline6,
+            ),
+          ),
+          FutureBuilder(
+            future: peliProvider.buscarTrailer(pelicula.id),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (snapshot.hasData) {
+                return YoutubePlayer(
+                  controller: YoutubePlayerController(
+                    initialVideoId: snapshot.data,
+                    flags: YoutubePlayerFlags(
+                      autoPlay: false,
+                      mute: false,
+                    ),
+                  ),
+                  showVideoProgressIndicator: true,
+                  progressIndicatorColor: Colors.blueAccent,
+                  progressColors: ProgressBarColors(
+                    playedColor: Colors.amber,
+                    handleColor: Colors.amberAccent,
+                  ),
+                );
+              } else {
+                return Center(child: CircularProgressIndicator());
+              }
+            },
+          ),
+        ],
+      ),
+    );
+  }
+
+  //Similar movies
+  Widget _similarMovies(Pelicula pelicula) {
+    final peliProvider = PeliculasProvider();
+
     return FutureBuilder(
-      future: peliProvider.buscarTrailer(pelicula.id),
+      future: peliProvider.getSimilarMovies(pelicula.id),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.hasData) {
-          return YoutubePlayer(
-            controller: YoutubePlayerController(
-              initialVideoId: snapshot.data,
-              flags: YoutubePlayerFlags(
-                autoPlay: false,
-                mute: false,
-              ),
-            ),
-            showVideoProgressIndicator: true,
-            progressIndicatorColor: Colors.blueAccent,
-            progressColors: ProgressBarColors(
-              playedColor: Colors.amber,
-              handleColor: Colors.amberAccent,
-            ),
-          );
+          return _crearSimilarPageView(snapshot.data);
         } else {
           return Center(child: CircularProgressIndicator());
         }
       },
     );
   }
+
 }
