@@ -40,7 +40,7 @@ class PeliculaDetalle extends StatelessWidget {
   Widget _crearAppBar(Pelicula pelicula) {
     return SliverAppBar(
       elevation: 2.0,
-      backgroundColor: Colors.indigoAccent,
+      backgroundColor: Colors.deepPurple,
       expandedHeight: 200.0,
       floating: false,
       pinned: true,
