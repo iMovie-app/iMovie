@@ -34,7 +34,9 @@ class PeliculaDetalle extends StatelessWidget {
           ]),
         )
       ],
-    ));
+      ),
+    );
+    
   }
 
   Widget crearAppBar(Pelicula pelicula) {

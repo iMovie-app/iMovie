@@ -1,14 +1,13 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:peliculas_app/src/pages/tv_home_page.dart';
 import 'package:peliculas_app/src/widgets/card_swiper_widget.dart';
 
 import '../providers/peliculas_provider.dart';
 import '../search/search_delegate.dart';
 import '../widgets/movie_horizontal.dart';
 
-class HomePage extends StatelessWidget {
+class TvHomePage extends StatelessWidget {
   final peliculasProvider = PeliculasProvider();
 
   @override
@@ -16,32 +15,30 @@ class HomePage extends StatelessWidget {
     peliculasProvider.getPopulares();
 
     return Scaffold(
-        appBar: AppBar(
-        
-        title: Text('Movies'),
+      appBar: AppBar(
+        title: Text('TV Shows'),
         centerTitle: true,
-          backgroundColor: Colors.deepPurple,
-          
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {
-                showSearch(
-                  context: context,
-                  delegate: DataSearch(),
-                );
-              },
-            )
+        backgroundColor: Colors.deepPurple,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              showSearch(
+                context: context,
+                delegate: DataSearch(),
+              );
+            },
+          )
+        ],
+      ),
+      body: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            _swiperTarjetas(),
+            _footer(context),
           ],
         ),
-        body: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              _swiperTarjetas(),
-              _footer(context),
-            ],
-          ),
       ),
       drawer: Drawer(
         child: ListView(
@@ -59,7 +56,6 @@ class HomePage extends StatelessWidget {
               ),
             ),
             ListTile(
-              iconColor: Colors.amber,
               title: const Text('TV Shows'),
               onTap: () {
                 Navigator.of(context).pushNamed('hometv');
@@ -75,7 +71,6 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
-        
   }
 
   Widget _swiperTarjetas() {

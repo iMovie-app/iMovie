@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:peliculas_app/src/pages/actor_detalle.dart';
 import 'package:peliculas_app/src/pages/home_page.dart';
 import 'package:peliculas_app/src/pages/splash_page.dart';
+import 'package:peliculas_app/src/pages/tv_home_page.dart';
 
 import 'src/pages/pelicula_detalle.dart';
 
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
           'home': (BuildContext context) => HomePage(),
           'detalle': (BuildContext context) => PeliculaDetalle(),
           'actor': (BuildContext context) => ActorDetalle(),
+          'hometv': (BuildContext context) => TvHomePage(),
         },
         theme: ThemeData(
           brightness: Brightness.dark,
