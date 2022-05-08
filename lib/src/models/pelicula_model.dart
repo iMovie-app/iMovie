@@ -5,8 +5,6 @@ import '../providers/peliculas_provider.dart';
 class Peliculas {
   List<Pelicula> items = [];
 
-  Peliculas();
-
   Peliculas.fromJsonList(List<dynamic> jsonList) {
     if (jsonList == null) return;
 

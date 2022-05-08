@@ -20,7 +20,7 @@ class PeliculaDetalle extends StatelessWidget {
     return Scaffold(
         body: CustomScrollView(
       slivers: <Widget>[
-        _crearAppBar(pelicula),
+        crearAppBar(pelicula),
         SliverList(
           delegate: SliverChildListDelegate([
             SizedBox(
@@ -37,7 +37,7 @@ class PeliculaDetalle extends StatelessWidget {
     ));
   }
 
-  Widget _crearAppBar(Pelicula pelicula) {
+  Widget crearAppBar(Pelicula pelicula) {
     return SliverAppBar(
       elevation: 2.0,
       backgroundColor: Colors.deepPurple,
@@ -126,15 +126,15 @@ class PeliculaDetalle extends StatelessWidget {
     );
   }
 
-  Widget _crearActoresPageView(List<Actor> Actores, Pelicula pelicula) {
+  Widget _crearActoresPageView(List<Actor> actores, Pelicula pelicula) {
     return SizedBox(
       height: 200.0,
       child: PageView.builder(
         pageSnapping: false,
         controller: PageController(viewportFraction: 0.3, initialPage: 1),
-        itemCount: Actores.length,
+        itemCount: actores.length,
         itemBuilder: (context, i) =>
-            _actorTarjeta(context, Actores[i], pelicula),
+            _actorTarjeta(context, actores[i], pelicula),
       ),
     );
   }

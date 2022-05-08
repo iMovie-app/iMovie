@@ -2,6 +2,7 @@
 
 import 'dart:async';
 import 'dart:convert';
+
 import '../models/actores_model.dart';
 import '../models/pelicula_model.dart';
 import 'package:http/http.dart' as http;
@@ -35,7 +36,16 @@ class PeliculasProvider {
     final resp = await http.get(url);
     final decodedData = json.decode(resp.body);
 
-    final peliculas = new Peliculas.fromJsonList(decodedData['results']);
+    final peliculas = Peliculas.fromJsonList(decodedData['results']);
+
+    return peliculas.items;
+  }
+
+  Future<List<Pelicula>> _procesarRespuesta2(Uri url) async {
+    final resp = await http.get(url);
+    final decodedData = json.decode(resp.body);
+
+    final peliculas = Peliculas.fromJsonList(decodedData['cast']);
 
     return peliculas.items;
   }
@@ -88,7 +98,7 @@ class PeliculasProvider {
 
     final cast = Cast.fromJsonList(decodedData['cast']);
 
-    return cast.actores;
+    return cast.items;
   }
 
   Future<List<Pelicula>> buscarPelicula(String query) async {
@@ -116,4 +126,32 @@ class PeliculasProvider {
 
     return key;
   }
+
+//Método que retorna un listado de películas en las que participa
+//el ID de actor pasado por parámetro.
+  Future<List<Pelicula>> getPeliculasByIdActor(int actorId) async {
+    final url = Uri.https(_url, '3/person/$actorId/movie_credits', {
+      'api_key': _apikey,
+      'language': _language,
+    });
+
+    return await _procesarRespuesta2(url);
+  }
+
+//Método que retorna la biografía de un actor a partir de su Id
+  Future<String> getBiography(int actorId) async {
+    final url = Uri.https(_url, '3/person/$actorId', {
+      'api_key': _apikey,
+      'language': _language,
+    });
+
+    final resp = await http.get(url);
+    final decodedData = json.decode(resp.body);
+
+    String biography = decodedData['biography'];
+
+    return biography;
+  }
+
+  
 }

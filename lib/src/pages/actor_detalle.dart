@@ -4,27 +4,30 @@ import 'package:flutter/material.dart';
 import 'package:peliculas_app/src/models/actores_model.dart';
 import 'package:peliculas_app/src/models/pelicula_model.dart';
 import 'package:peliculas_app/src/pages/pelicula_detalle.dart';
+import 'package:peliculas_app/src/providers/peliculas_provider.dart';
+import 'package:peliculas_app/src/widgets/card_swiper_widget.dart';
 
 class ActorDetalle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     final arguments = ModalRoute.of(context)!.settings.arguments as Map;
     final Actor actor = arguments['actor'];
     final Pelicula pelicula = arguments['pelicula'];
-        
 
     return Scaffold(
         body: CustomScrollView(
       slivers: <Widget>[
-        _crearAppbar(actor),
+        PeliculaDetalle().crearAppBar(pelicula),
         SliverList(
             delegate: SliverChildListDelegate([
           const SizedBox(height: 10.0),
-          _character(actor),
-          PeliculaDetalle().posterTitulo(context, pelicula),
-          _biography(pelicula),
-          
+          _character(context, actor),
+          _posterActor(context, actor),
+          _biography(actor),
+          _swiperTarjetas(actor.id),
+          SizedBox(
+            height: 20.0,
+          ),
         ]))
       ],
     ));
@@ -53,24 +56,97 @@ class ActorDetalle extends StatelessWidget {
     );
   }
 
-  Widget _character(Actor actor) {
+  Widget _character(BuildContext context, Actor actor) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-      child: Text(
-        actor.character,
-        textAlign: TextAlign.center,
-        style: const TextStyle(
-            color: Color.fromARGB(255, 0, 0, 0), fontSize: 25.0),
-      ),
+      child: Text(actor.character,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.headlineSmall),
     );
   }
 
-  Widget _biography(Pelicula pelicula) {
+  Widget _biography(Actor actor) {
+    return FutureBuilder(
+      future: PeliculasProvider().getBiography(actor.id),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        String biography = snapshot.data;
+        if (snapshot.hasData) {
+          return Container(
+            padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+            child: Text(
+              biography,
+              textAlign: TextAlign.justify,
+            ),
+          );
+        } else {
+          return Container(
+            height: 400.0,
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        }
+      },
+    );
+  }
+
+  Widget _swiperTarjetas(int actorId) {
+    return FutureBuilder(
+      future: PeliculasProvider().getPeliculasByIdActor(actorId),
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.hasData) {
+          return CardSwiper(peliculas: snapshot.data);
+        } else {
+          return Container(
+            height: 400.0,
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        }
+      },
+    );
+  }
+
+  Widget _posterActor(BuildContext context, Actor actor) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-      child: Text(
-        pelicula.overview,
-        textAlign: TextAlign.justify,
+      padding: EdgeInsets.symmetric(horizontal: 20.0),
+      child: Row(
+        children: <Widget>[
+          Hero(
+            tag: actor.id,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20.0),
+              child: Image(
+                image: NetworkImage(actor.getFoto()),
+                height: 150.0,
+              ),
+            ),
+          ),
+          SizedBox(
+            width: 20.0,
+          ),
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(actor.name,
+                    style: Theme.of(context).textTheme.headline6,
+                    overflow: TextOverflow.ellipsis),
+                Text(actor.character,
+                    style: Theme.of(context).textTheme.subtitle1,
+                    overflow: TextOverflow.ellipsis),
+                Row(
+                  children: <Widget>[
+                    Icon(Icons.star_border),
+                    Text(actor.popularity.toString(),
+                        style: Theme.of(context).textTheme.subtitle1)
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
