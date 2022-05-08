@@ -1,18 +1,18 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:peliculas_app/src/widgets/card_swiper_widget.dart';
-
-import '../providers/peliculas_provider.dart';
+import 'package:peliculas_app/src/providers/series_provider.dart';
+import 'package:peliculas_app/src/search/search_delegate_series.dart';
+import 'package:peliculas_app/src/widgets/card_swiper_widget_series.dart';
 import '../search/search_delegate.dart';
-import '../widgets/movie_horizontal.dart';
+import '../widgets/movie_horizontal_series.dart';
 
 class TvHomePage extends StatelessWidget {
-  final peliculasProvider = PeliculasProvider();
+  final seriesProvider = SeriesProvider();
 
   @override
   Widget build(BuildContext context) {
-    peliculasProvider.getPopulares();
+    seriesProvider.getPopulares();
 
     return Scaffold(
       appBar: AppBar(
@@ -25,7 +25,7 @@ class TvHomePage extends StatelessWidget {
             onPressed: () {
               showSearch(
                 context: context,
-                delegate: DataSearch(),
+                delegate: DataSearchSeries(),
               );
             },
           )
@@ -75,10 +75,10 @@ class TvHomePage extends StatelessWidget {
 
   Widget _swiperTarjetas() {
     return FutureBuilder(
-      future: peliculasProvider.getEnCines(),
+      future: seriesProvider.getOnTheAir(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.hasData) {
-          return CardSwiper(peliculas: snapshot.data);
+          return CardSwiperSeries(series: snapshot.data);
         } else {
           return Container(
             height: 400.0,
@@ -103,12 +103,12 @@ class TvHomePage extends StatelessWidget {
                   style: Theme.of(context).textTheme.subtitle1)),
           SizedBox(height: 5.0),
           StreamBuilder(
-            stream: peliculasProvider.popularesStream,
+            stream: seriesProvider.popularesStream,
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
-                return MovieHorizontal(
-                  peliculas: snapshot.data,
-                  siguientePagina: peliculasProvider.getPopulares,
+                return MovieHorizontalSeries(
+                  series: snapshot.data,
+                  siguientePagina: seriesProvider.getPopulares,
                 );
               } else {
                 return Container(

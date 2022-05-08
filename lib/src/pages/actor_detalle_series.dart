@@ -5,10 +5,11 @@ import 'package:peliculas_app/src/models/actores_model.dart';
 import 'package:peliculas_app/src/models/pelicula_model.dart';
 import 'package:peliculas_app/src/models/tv_model.dart';
 import 'package:peliculas_app/src/pages/pelicula_detalle.dart';
+import 'package:peliculas_app/src/pages/serie_detalle.dart';
 import 'package:peliculas_app/src/providers/peliculas_provider.dart';
 import 'package:peliculas_app/src/widgets/card_swiper_widget.dart';
 
-class ActorDetalle extends StatelessWidget {
+class ActorDetalleSerie extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final arguments = ModalRoute.of(context)!.settings.arguments as Map;
@@ -19,7 +20,7 @@ class ActorDetalle extends StatelessWidget {
     return Scaffold(
         body: CustomScrollView(
       slivers: <Widget>[
-        PeliculaDetalle().crearAppBar(pelicula),
+        SerieDetalle().crearAppBar(serie),
         SliverList(
             delegate: SliverChildListDelegate([
           const SizedBox(height: 10.0),
@@ -152,5 +153,4 @@ class ActorDetalle extends StatelessWidget {
       ),
     );
   }
-
 }

@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:peliculas_app/src/pages/tv_home_page.dart';
 import 'package:peliculas_app/src/widgets/card_swiper_widget.dart';
 
 import '../providers/peliculas_provider.dart';

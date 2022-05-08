@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../models/pelicula_model.dart';
+import 'package:peliculas_app/src/models/tv_model.dart';
 
-class MovieHorizontal extends StatelessWidget {
-  final List<Pelicula> peliculas;
+class MovieHorizontalSeries extends StatelessWidget {
+  final List<Serie> series;
   final Function siguientePagina;
 
-  MovieHorizontal({required this.peliculas, required this.siguientePagina});
+  MovieHorizontalSeries({required this.series, required this.siguientePagina});
 
   final _pageController = PageController(initialPage: 1, viewportFraction: 0.3);
 
@@ -25,25 +25,25 @@ class MovieHorizontal extends StatelessWidget {
       child: PageView.builder(
         pageSnapping: false,
         controller: _pageController,
-        itemCount: peliculas.length,
-        itemBuilder: (context, i) => _tarjeta(context, peliculas[i]),
+        itemCount: series.length,
+        itemBuilder: (context, i) => _tarjeta(context, series[i]),
       ),
     );
   }
 
-  Widget _tarjeta(BuildContext context, Pelicula pelicula) {
-    pelicula.uniqueId = '${pelicula.id}-poster';
+  Widget _tarjeta(BuildContext context, Serie serie) {
+    serie.uniqueId = '${serie.id}-poster';
 
     final tarjeta = Container(
       margin: EdgeInsets.only(right: 10.0),
       child: Column(
         children: <Widget>[
           Hero(
-            tag: pelicula.uniqueId,
+            tag: serie.uniqueId,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
               child: FadeInImage(
-                image: NetworkImage(pelicula.getPosterImg()),
+                image: NetworkImage(serie.getPosterImg()),
                 placeholder: AssetImage('assets/img/no-image.jpg'),
                 fit: BoxFit.cover,
                 height: 160.0,
@@ -52,7 +52,7 @@ class MovieHorizontal extends StatelessWidget {
           ),
           SizedBox(height: 5.0),
           Text(
-            pelicula.title,
+            serie.name,
             overflow: TextOverflow.ellipsis,
             style: Theme.of(context).textTheme.caption,
           ),
@@ -63,13 +63,13 @@ class MovieHorizontal extends StatelessWidget {
     return GestureDetector(
       child: tarjeta,
       onTap: () {
-        Navigator.pushNamed(context, 'detalle', arguments: pelicula);
+        Navigator.pushNamed(context, 'detalleserie', arguments: serie);
       },
     );
   }
 
-  List<Widget> _tarjetas(BuildContext context, Pelicula pelicula) {
-    return peliculas.map((pelicula) {
+  List<Widget> _tarjetas(BuildContext context, Serie serie) {
+    return series.map((pelicula) {
       final _screenSize = MediaQuery.of(context).size;
       return Container(
         margin: EdgeInsets.only(right: 10.0),
@@ -86,7 +86,7 @@ class MovieHorizontal extends StatelessWidget {
             ),
             SizedBox(height: 5.0),
             Text(
-              pelicula.title,
+              serie.name,
               overflow: TextOverflow.ellipsis,
               style: Theme.of(context).textTheme.caption,
             ),
