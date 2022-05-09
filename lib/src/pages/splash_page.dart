@@ -1,7 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:peliculas_app/src/pages/home_page.dart';
+import 'package:peliculas_app/src/pages/home.dart';
+import 'package:peliculas_app/src/pages/home_movie.dart';
 
 class SplashPage extends StatefulWidget {
 
@@ -17,7 +18,7 @@ void initState() {
 
   Timer(const Duration(seconds: 4), () =>
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomePage())));
+            context, MaterialPageRoute(builder: (context) => Home())));
 
 }
 

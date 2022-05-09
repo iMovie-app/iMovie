@@ -1,45 +1,47 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:peliculas_app/src/providers/series_provider.dart';
-import 'package:peliculas_app/src/search/search_delegate_series.dart';
-import 'package:peliculas_app/src/widgets/card_swiper_widget_series.dart';
+import 'package:peliculas_app/src/widgets/card_swiper_widget.dart';
 import 'package:peliculas_app/src/widgets/menu_drawer.dart';
-import '../widgets/movie_horizontal_series.dart';
+
+import '../providers/peliculas_provider.dart';
+import '../search/search_delegate.dart';
+import '../widgets/movie_horizontal.dart';
 import 'dart:math';
 
-class TvHomePage extends StatelessWidget {
-  final seriesProvider = SeriesProvider();
+class HomeMovie extends StatelessWidget {
+  final peliculasProvider = PeliculasProvider();
 
   @override
   Widget build(BuildContext context) {
-    seriesProvider.getPopulares();
+    peliculasProvider.getPopulares();
+
     return Scaffold(
         extendBodyBehindAppBar: true,
-      appBar: AppBar(
+        appBar: AppBar(
           elevation: 0,
-          title: Text('TV Series',
+          title: Text('MOVIES',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 30.0,
                   fontWeight: FontWeight.bold)),
-        centerTitle: true,
+          centerTitle: true,
           backgroundColor: Colors.transparent,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              showSearch(
-                context: context,
-                delegate: DataSearchSeries(),
-              );
-            },
-          )
-        ],
-      ),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                showSearch(
+                  context: context,
+                  delegate: DataSearch(),
+                );
+              },
+            )
+          ],
+        ),
 
-      // Propiedad del Scaffold que llama al menu que hemos creado en la clase DrawerMenu
-      drawer: DrawerMenu(),
+        // Propiedad del Scaffold que llama al menu que hemos creado en la clase DrawerMenu
+        drawer: DrawerMenu(),
         body: Stack(children: <Widget>[
           _fondoApp(),
           Container(
@@ -57,10 +59,10 @@ class TvHomePage extends StatelessWidget {
 
   Widget _swiperTarjetas() {
     return FutureBuilder(
-      future: seriesProvider.getOnTheAir(),
+      future: peliculasProvider.getEnCines(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.hasData) {
-          return CardSwiperSeries(series: snapshot.data);
+          return CardSwiper(peliculas: snapshot.data);
         } else {
           return Container(
             height: 400.0,
@@ -85,12 +87,12 @@ class TvHomePage extends StatelessWidget {
                   style: Theme.of(context).textTheme.subtitle1)),
           SizedBox(height: 30.0),
           StreamBuilder(
-            stream: seriesProvider.popularesStream,
+            stream: peliculasProvider.popularesStream,
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
-                return MovieHorizontalSeries(
-                  series: snapshot.data,
-                  siguientePagina: seriesProvider.getPopulares,
+                return MovieHorizontal(
+                  peliculas: snapshot.data,
+                  siguientePagina: peliculasProvider.getPopulares,
                 );
               } else {
                 return Container(
@@ -106,6 +108,7 @@ class TvHomePage extends StatelessWidget {
       ),
     );
   }
+
   Widget _fondoApp() {
     final gradiente = Container(
       width: double.infinity,

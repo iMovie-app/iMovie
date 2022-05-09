@@ -4,15 +4,21 @@ class DrawerMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      elevation: 10.0,
+      backgroundColor: Color.fromARGB(173, 37, 5, 99),
+      elevation: 0,
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
           _buildDrawerHeader(),
           _buildDrawerItem(
+              icon: Icons.home,
+              text: 'Home',
+              onTap: () => {Navigator.of(context).pushNamed('home')}),
+          SizedBox(height: 10.0),
+          _buildDrawerItem(
               icon: Icons.movie,
               text: 'Movies',
-              onTap: () => {Navigator.of(context).pushNamed('home')}),
+              onTap: () => {Navigator.of(context).pushNamed('homemovie')}),
           SizedBox(height: 10.0),
           _buildDrawerItem(
               icon: Icons.tv,
@@ -35,10 +41,13 @@ class DrawerMenu extends StatelessWidget {
     return DrawerHeader(
         margin: EdgeInsets.zero,
         padding: EdgeInsets.zero,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                fit: BoxFit.fill, image: AssetImage("assets/img/iMovie.jpeg"))),
         child: Stack(children: <Widget>[
+          CircleAvatar(
+            backgroundColor: Colors.deepPurple,
+            radius: 120.0,
+            child: Icon(Icons.abc, color: Colors.white, size: 30.0),
+            backgroundImage: AssetImage("assets/img/iMovie.jpeg"),
+          ),
           Positioned(
               bottom: 20.0,
               left: 20.0,

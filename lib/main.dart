@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:peliculas_app/src/pages/actor_detalle.dart';
 import 'package:peliculas_app/src/pages/actor_detalle_series.dart';
-import 'package:peliculas_app/src/pages/home_page.dart';
+import 'package:peliculas_app/src/pages/home.dart';
+import 'package:peliculas_app/src/pages/home_movie.dart';
 import 'package:peliculas_app/src/pages/serie_detalle.dart';
 import 'package:peliculas_app/src/pages/splash_page.dart';
 import 'package:peliculas_app/src/pages/tv_home_page.dart';
@@ -15,15 +16,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: 'splash',
+        initialRoute: 'home',
         routes: {
           'splash': (BuildContext context) => SplashPage(),
-          'home': (BuildContext context) => HomePage(),
+          'home': (BuildContext context) => Home(),
+          'homemovie': (BuildContext context) => HomeMovie(),
+          'hometv': (BuildContext context) => TvHomePage(),
           'detalle': (BuildContext context) => PeliculaDetalle(),
           'detalleserie': (BuildContext context) => SerieDetalle(),
           'actor': (BuildContext context) => ActorDetalle(),
           'actorserie': (BuildContext context) => ActorDetalleSerie(),
-          'hometv': (BuildContext context) => TvHomePage(),
+          
         },
         theme: ThemeData(
           brightness: Brightness.dark,
