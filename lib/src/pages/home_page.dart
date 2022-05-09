@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:peliculas_app/src/widgets/card_swiper_widget.dart';
@@ -15,32 +15,30 @@ class HomePage extends StatelessWidget {
     peliculasProvider.getPopulares();
 
     return Scaffold(
-        appBar: AppBar(
-        
+      appBar: AppBar(
         title: Text('Movies'),
         centerTitle: true,
-          backgroundColor: Colors.deepPurple,
-          
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {
-                showSearch(
-                  context: context,
-                  delegate: DataSearch(),
-                );
-              },
-            )
+        backgroundColor: Colors.deepPurple,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              showSearch(
+                context: context,
+                delegate: DataSearch(),
+              );
+            },
+          )
+        ],
+      ),
+      body: Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            _swiperTarjetas(),
+            _footer(context),
           ],
         ),
-        body: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              _swiperTarjetas(),
-              _footer(context),
-            ],
-          ),
       ),
       drawer: Drawer(
         child: ListView(
@@ -74,7 +72,6 @@ class HomePage extends StatelessWidget {
         ),
       ),
     );
-        
   }
 
   Widget _swiperTarjetas() {

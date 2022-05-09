@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:peliculas_app/src/widgets/card_swiper_widget_series.dart';
-import 'package:peliculas_app/src/widgets/movie_horizontal_series.dart';
 
 import '../models/actores_model.dart';
 import '../models/tv_model.dart';
@@ -112,8 +110,6 @@ class SerieDetalle extends StatelessWidget {
   }
 
   Widget _crearCasting(Serie serie) {
-    final seriesProvider = SeriesProvider();
-
     return FutureBuilder(
       future: seriesProvider.getCast(serie.id.toString()),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -216,10 +212,8 @@ class SerieDetalle extends StatelessWidget {
 
   //Similar movies
   Widget _similarMovies(Serie serie) {
-    final serieProvider = SeriesProvider();
-
     return FutureBuilder(
-      future: serieProvider.getSimilarSeries(serie.id),
+      future: seriesProvider.getSimilarSeries(serie.id),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.hasData) {
           return _crearSimilarPageView(snapshot.data);

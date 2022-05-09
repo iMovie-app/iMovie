@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:peliculas_app/src/models/actores_model.dart';
@@ -14,7 +14,7 @@ class ActorDetalle extends StatelessWidget {
     final arguments = ModalRoute.of(context)!.settings.arguments as Map;
     final Actor actor = arguments['actor'];
     final Pelicula pelicula = arguments['pelicula'];
-    final Serie serie = arguments['serie'];
+    final Serie? serie = arguments['serie'];
 
     return Scaffold(
         body: CustomScrollView(
@@ -68,15 +68,15 @@ class ActorDetalle extends StatelessWidget {
   }
 
   Widget _biography(Actor actor) {
+    final pelisProvider = PeliculasProvider();
     return FutureBuilder(
-      future: PeliculasProvider().getBiography(actor.id),
+      future: pelisProvider.getBiography(actor.id),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        String biography = snapshot.data;
-        if (snapshot.hasData) {
+        if (snapshot.hasData && snapshot.data != null) {
           return Container(
             padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
             child: Text(
-              biography,
+              snapshot.data,
               textAlign: TextAlign.justify,
             ),
           );
@@ -152,5 +152,4 @@ class ActorDetalle extends StatelessWidget {
       ),
     );
   }
-
 }

@@ -15,28 +15,27 @@ class PeliculaDetalle extends StatelessWidget {
   Widget build(BuildContext context) {
     final Pelicula pelicula =
         ModalRoute.of(context)!.settings.arguments as Pelicula;
-    final peliculasProvider = PeliculasProvider();
+    final peliProvider = PeliculasProvider();
 
     return Scaffold(
-        body: CustomScrollView(
-      slivers: <Widget>[
-        crearAppBar(pelicula),
-        SliverList(
-          delegate: SliverChildListDelegate([
-            SizedBox(
-              height: 10.0,
-            ),
-            posterTitulo(context, pelicula),
-            _descripcion(pelicula),
-            _youtubeTrailer(context, pelicula),
-            _crearCasting(pelicula),
-            _similarMovies(pelicula),
-          ]),
-        )
-      ],
+      body: CustomScrollView(
+        slivers: <Widget>[
+          crearAppBar(pelicula),
+          SliverList(
+            delegate: SliverChildListDelegate([
+              SizedBox(
+                height: 10.0,
+              ),
+              posterTitulo(context, pelicula),
+              _descripcion(pelicula),
+              _youtubeTrailer(context, pelicula),
+              _crearCasting(pelicula),
+              _similarMovies(pelicula),
+            ]),
+          )
+        ],
       ),
     );
-    
   }
 
   Widget crearAppBar(Pelicula pelicula) {
@@ -114,8 +113,6 @@ class PeliculaDetalle extends StatelessWidget {
   }
 
   Widget _crearCasting(Pelicula pelicula) {
-    final peliProvider = PeliculasProvider();
-
     return FutureBuilder(
       future: peliProvider.getCast(pelicula.id.toString()),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -219,8 +216,6 @@ class PeliculaDetalle extends StatelessWidget {
 
   //Similar movies
   Widget _similarMovies(Pelicula pelicula) {
-    final peliProvider = PeliculasProvider();
-
     return FutureBuilder(
       future: peliProvider.getSimilarMovies(pelicula.id),
       builder: (BuildContext context, AsyncSnapshot snapshot) {

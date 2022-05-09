@@ -17,7 +17,7 @@ class Actor {
   late String originalName;
   late double popularity;
   late String? profilePath;
-  late int castId;
+  late int? castId;
   late String character;
   late String creditId;
 
@@ -43,7 +43,6 @@ class Actor {
     creditId = json['credit_id'];
   }
 
-  
   getFoto() {
     if (profilePath == null) {
       return 'https://llerena.org/wp-content/uploads/2017/11/imagen-no-disponible.jpg';
