@@ -115,8 +115,8 @@ class TvHomePage extends StatelessWidget {
               begin: FractionalOffset(0.0, 0.6),
               end: FractionalOffset(0.0, 1.0),
               colors: [
-            Color.fromRGBO(52, 54, 101, 1.0),
-            Color.fromRGBO(35, 37, 57, 1.0)
+            Color.fromARGB(255, 0, 0, 0),
+            Color.fromARGB(255, 114, 120, 184)
           ])),
     );
 
@@ -128,8 +128,8 @@ class TvHomePage extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(80.0),
               gradient: LinearGradient(colors: [
-                Color.fromARGB(255, 137, 13, 94),
-                Color.fromRGBO(241, 142, 172, 1.0)
+                Color.fromARGB(255, 37, 2, 23),
+                Colors.deepPurple,
               ])),
         ));
 
