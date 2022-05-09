@@ -142,7 +142,7 @@ class PeliculasProvider {
   Future<String> getBiography(int actorId) async {
     final url = Uri.https(_url, '3/person/$actorId', {
       'api_key': _apikey,
-      'language': _language,
+      'language': _language2,
     });
 
     final resp = await http.get(url);
@@ -152,6 +152,4 @@ class PeliculasProvider {
 
     return biography;
   }
-
-  
 }
