@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:peliculas_app/src/widgets/card_swiper_widget.dart';
+import 'package:peliculas_app/src/widgets/menu_drawer.dart';
 
 import '../providers/peliculas_provider.dart';
 import '../search/search_delegate.dart';
@@ -31,43 +32,15 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
+      
+      // Propiedad del Scaffold que llama al menu que hemos creado en la clase DrawerMenu
+      drawer: DrawerMenu(),
       body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             _swiperTarjetas(),
             _footer(context),
-          ],
-        ),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            UserAccountsDrawerHeader(
-              accountName: Text("iMOVIE"),
-              accountEmail: Text("https://github.com/iMovie-app/iMovie"),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.deepPurple,
-                child: Text(
-                  "A",
-                  style: TextStyle(fontSize: 40.0),
-                ),
-              ),
-            ),
-            ListTile(
-              iconColor: Colors.amber,
-              title: const Text('TV Shows'),
-              onTap: () {
-                Navigator.of(context).pushNamed('hometv');
-              },
-            ),
-            ListTile(
-              title: const Text('Movies'),
-              onTap: () {
-                Navigator.of(context).pushNamed('home');
-              },
-            ),
           ],
         ),
       ),

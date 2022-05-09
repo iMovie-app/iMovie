@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:peliculas_app/src/providers/series_provider.dart';
 import 'package:peliculas_app/src/search/search_delegate_series.dart';
 import 'package:peliculas_app/src/widgets/card_swiper_widget_series.dart';
+import 'package:peliculas_app/src/widgets/menu_drawer.dart';
 import '../search/search_delegate.dart';
 import '../widgets/movie_horizontal_series.dart';
 
@@ -16,7 +17,7 @@ class TvHomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('TV Shows'),
+        title: Text('TV Series'),
         centerTitle: true,
         backgroundColor: Colors.deepPurple,
         actions: <Widget>[
@@ -31,42 +32,15 @@ class TvHomePage extends StatelessWidget {
           )
         ],
       ),
+
+      // Propiedad del Scaffold que llama al menu que hemos creado en la clase DrawerMenu
+      drawer: DrawerMenu(),
       body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             _swiperTarjetas(),
             _footer(context),
-          ],
-        ),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            UserAccountsDrawerHeader(
-              accountName: Text("iMOVIE"),
-              accountEmail: Text("https://github.com/iMovie-app/iMovie"),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.deepPurple,
-                child: Text(
-                  "A",
-                  style: TextStyle(fontSize: 40.0),
-                ),
-              ),
-            ),
-            ListTile(
-              title: const Text('TV Shows'),
-              onTap: () {
-                Navigator.of(context).pushNamed('hometv');
-              },
-            ),
-            ListTile(
-              title: const Text('Movies'),
-              onTap: () {
-                Navigator.of(context).pushNamed('home');
-              },
-            ),
           ],
         ),
       ),
