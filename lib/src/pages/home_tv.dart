@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:peliculas_app/src/providers/series_provider.dart';
 import 'package:peliculas_app/src/search/search_delegate_series.dart';
 import 'package:peliculas_app/src/widgets/card_swiper_widget_series.dart';
+import 'package:peliculas_app/src/widgets/fondo_homes.dart';
 import 'package:peliculas_app/src/widgets/menu_drawer.dart';
 import '../widgets/movie_horizontal_series.dart';
-import 'dart:math';
 
 class TvHomePage extends StatelessWidget {
   final seriesProvider = SeriesProvider();
@@ -16,32 +16,32 @@ class TvHomePage extends StatelessWidget {
     seriesProvider.getPopulares();
     return Scaffold(
         extendBodyBehindAppBar: true,
-      appBar: AppBar(
+        appBar: AppBar(
           elevation: 0,
           title: Text('TV Series',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 30.0,
                   fontWeight: FontWeight.bold)),
-        centerTitle: true,
+          centerTitle: true,
           backgroundColor: Colors.transparent,
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              showSearch(
-                context: context,
-                delegate: DataSearchSeries(),
-              );
-            },
-          )
-        ],
-      ),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                showSearch(
+                  context: context,
+                  delegate: DataSearchSeries(),
+                );
+              },
+            )
+          ],
+        ),
 
-      // Propiedad del Scaffold que llama al menu que hemos creado en la clase DrawerMenu
-      drawer: DrawerMenu(),
+        // Propiedad del Scaffold que llama al menu que hemos creado en la clase DrawerMenu
+        drawer: DrawerMenu(),
         body: Stack(children: <Widget>[
-          _fondoApp(),
+          FondoHomes(),
           Container(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -104,37 +104,6 @@ class TvHomePage extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-  Widget _fondoApp() {
-    final gradiente = Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: FractionalOffset(0.0, 0.6),
-              end: FractionalOffset(0.0, 1.0),
-              colors: [
-            Color.fromARGB(255, 0, 0, 0),
-            Color.fromARGB(255, 114, 120, 184)
-          ])),
-    );
-
-    final cajaRosa = Transform.rotate(
-        angle: -pi / 5.0,
-        child: Container(
-          height: 360.0,
-          width: 360.0,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(80.0),
-              gradient: LinearGradient(colors: [
-                Color.fromARGB(255, 37, 2, 23),
-                Colors.deepPurple,
-              ])),
-        ));
-
-    return Stack(
-      children: <Widget>[gradiente, Positioned(top: -100.0, child: cajaRosa)],
     );
   }
 }

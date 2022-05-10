@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:peliculas_app/src/widgets/fondo_homes.dart';
 
-import 'dart:math';
 import 'dart:ui';
-
 import 'package:peliculas_app/src/widgets/menu_drawer.dart';
 
 class Home extends StatelessWidget {
@@ -18,53 +17,21 @@ class Home extends StatelessWidget {
       ),
       body: Stack(
         children: <Widget>[
-          _fondoApp(),
+          FondoHomes(),
           SingleChildScrollView(
             child: Column(
               children: <Widget>[
                 _titulos(),
                 SizedBox(
-                  height: 20,
+                  height: 30,
                 ),
-                _botonesRedondeados(),
+                _botonesRedondeados(context),
               ],
             ),
           )
         ],
       ),
       drawer: DrawerMenu(),
-    );
-  }
-
-  Widget _fondoApp() {
-    final gradiente = Container(
-      width: double.infinity,
-      height: double.infinity,
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: FractionalOffset(0.0, 0.6),
-              end: FractionalOffset(0.0, 1.0),
-              colors: [
-            Color.fromARGB(255, 0, 0, 0),
-            Color.fromARGB(255, 114, 120, 184)
-          ])),
-    );
-
-    final cajaRosa = Transform.rotate(
-        angle: -pi / 5.0,
-        child: Container(
-          height: 360.0,
-          width: 360.0,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(80.0),
-              gradient: LinearGradient(colors: [
-                Color.fromARGB(255, 37, 2, 23),
-                Colors.deepPurple,
-              ])),
-        ));
-
-    return Stack(
-      children: <Widget>[gradiente, Positioned(top: -100.0, child: cajaRosa)],
     );
   }
 
@@ -75,10 +42,10 @@ class Home extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text('Welcome to iMOVIE app',
+            Text('iMOVIE app',
                 style: TextStyle(
                     color: Colors.white,
-                    fontSize: 30.0,
+                    fontSize: 40.0,
                     fontWeight: FontWeight.bold)),
             SizedBox(height: 10.0),
             Text('Find information about movies and TV series ',
@@ -90,22 +57,41 @@ class Home extends StatelessWidget {
   }
 }
 
-Widget _botonesRedondeados() {
+Widget _botonesRedondeados(BuildContext context) {
   return Table(
     children: [
       TableRow(children: [
-        _crearBotonRedondeado(Colors.blue, Icons.movie, 'Movies'),
+        GestureDetector(
+          child: _crearBotonRedondeado(Colors.blue, Icons.movie, 'Movies'),
+          onTap: () => {Navigator.of(context).pushNamed('homemovie')},
+        ),
+        GestureDetector(
+          child: _crearBotonRedondeado(Colors.blue, Icons.movie, 'Movies'),
+          onTap: () => {Navigator.of(context).pushNamed('homemovie')},
+        ),
       ]),
       TableRow(children: [
-        _crearBotonRedondeado(Colors.purpleAccent, Icons.tv, 'Tv Series'),
+        GestureDetector(
+          child:
+              _crearBotonRedondeado(Colors.purpleAccent, Icons.tv, 'Tv Series'),
+          onTap: () => {Navigator.of(context).pushNamed('hometv')},
+        ),
+        GestureDetector(
+          child: _crearBotonRedondeado(Colors.blue, Icons.movie, 'Movies'),
+          onTap: () => {Navigator.of(context).pushNamed('homemovie')},
+        ),
       ]),
       TableRow(children: [
-        _crearBotonRedondeado(
-            Color.fromARGB(255, 34, 159, 36), Icons.contact_support, 'Contact'),
+        GestureDetector(
+          child: _crearBotonRedondeado(Color.fromARGB(255, 34, 159, 36),
+              Icons.contact_support, 'Contact'),
+          onTap: () => {},
+        ),
+        GestureDetector(
+          child: _crearBotonRedondeado(Colors.blue, Icons.movie, 'Movies'),
+          onTap: () => {Navigator.of(context).pushNamed('homemovie')},
+        ),
       ]),
-      TableRow(children: [
-        _crearBotonRedondeado(Colors.red, Icons.collections, 'Photos'),
-      ])
     ],
   );
 }

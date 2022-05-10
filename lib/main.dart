@@ -5,7 +5,7 @@ import 'package:peliculas_app/src/pages/home.dart';
 import 'package:peliculas_app/src/pages/home_movie.dart';
 import 'package:peliculas_app/src/pages/serie_detalle.dart';
 import 'package:peliculas_app/src/pages/splash_page.dart';
-import 'package:peliculas_app/src/pages/tv_home_page.dart';
+import 'package:peliculas_app/src/pages/home_tv.dart';
 
 import 'src/pages/pelicula_detalle.dart';
 
