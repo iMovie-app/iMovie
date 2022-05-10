@@ -50,7 +50,7 @@ class SeriesProvider {
   Future<List<Serie>> getOnTheAir() async {
     final url = Uri.https(_url, '/3/tv/on_the_air', {
       'api_key': _apikey,
-      'language': _language,
+      'language': _language2,
     });
 
     return await _procesarRespuesta(url);
@@ -59,7 +59,7 @@ class SeriesProvider {
   Future<List<Serie>> getSimilarSeries(int id) async {
     final url = Uri.https(_url, '/3/tv/$id/similar', {
       'api_key': _apikey,
-      'language': _language,
+      'language': _language2,
     });
 
     return await _procesarRespuesta(url);
@@ -72,7 +72,7 @@ class SeriesProvider {
 
     final url = Uri.https(_url, '/3/tv/popular', {
       'api_key': _apikey,
-      'language': _language,
+      'language': _language2,
       'page': _popularesPage.toString(),
     });
 
@@ -87,7 +87,7 @@ class SeriesProvider {
   Future<List<Actor>> getCast(String serieId) async {
     final url = Uri.https(_url, '/3/tv/$serieId/credits', {
       'api_key': _apikey,
-      'language': _language,
+      'language': _language2,
     });
 
     final resp = await http.get(url);
@@ -101,7 +101,7 @@ class SeriesProvider {
   Future<List<Serie>> buscarSerie(String query) async {
     final url = Uri.https(_url, '/3/search/tv', {
       'api_key': _apikey,
-      'language': _language,
+      'language': _language2,
       'query': query,
     });
 
@@ -129,7 +129,7 @@ class SeriesProvider {
   Future<List<Serie>> getPeliculasByIdActor(int actorId) async {
     final url = Uri.https(_url, '3/person/$actorId/tv_credits', {
       'api_key': _apikey,
-      'language': _language,
+      'language': _language2,
     });
 
     return await _procesarRespuesta2(url);

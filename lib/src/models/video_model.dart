@@ -20,6 +20,13 @@ class Trailers {
           return item.key.toString();
         }
       }
+    }
+    if (items != null) {
+      for (var item2 in items) {
+        if (item2.type == 'Teaser') {
+          return item2.key.toString();
+        }
+      }
     } else {
       return '4wCH1K-ckZw';
     }
