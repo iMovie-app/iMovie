@@ -42,11 +42,7 @@ class Home extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text('iMOVIE app',
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 40.0,
-                    fontWeight: FontWeight.bold)),
+            Image(image: AssetImage("assets/img/iMOVIE_logo(500x250).png")),
             SizedBox(height: 10.0),
             Text('Find information about movies and TV series ',
                 style: TextStyle(color: Colors.white, fontSize: 18.0)),
@@ -62,41 +58,31 @@ Widget _botonesRedondeados(BuildContext context) {
     children: [
       TableRow(children: [
         GestureDetector(
-          child: _crearBotonRedondeado(Colors.blue, Icons.movie, 'Movies'),
-          onTap: () => {Navigator.of(context).pushNamed('homemovie')},
-        ),
-        GestureDetector(
-          child: _crearBotonRedondeado(Colors.blue, Icons.movie, 'Movies'),
+          child:
+              _crearBotonRedondeado(Colors.blue, "assets/img/buttonMovies.png"),
           onTap: () => {Navigator.of(context).pushNamed('homemovie')},
         ),
       ]),
       TableRow(children: [
         GestureDetector(
           child:
-              _crearBotonRedondeado(Colors.purpleAccent, Icons.tv, 'Tv Series'),
+              _crearBotonRedondeado(
+              Colors.purpleAccent, "assets/img/buttonSeries.png"),
           onTap: () => {Navigator.of(context).pushNamed('hometv')},
-        ),
-        GestureDetector(
-          child: _crearBotonRedondeado(Colors.blue, Icons.movie, 'Movies'),
-          onTap: () => {Navigator.of(context).pushNamed('homemovie')},
         ),
       ]),
       TableRow(children: [
         GestureDetector(
           child: _crearBotonRedondeado(Color.fromARGB(255, 34, 159, 36),
-              Icons.contact_support, 'Contact'),
+              "assets/img/buttonContact.png"),
           onTap: () => {},
-        ),
-        GestureDetector(
-          child: _crearBotonRedondeado(Colors.blue, Icons.movie, 'Movies'),
-          onTap: () => {Navigator.of(context).pushNamed('homemovie')},
         ),
       ]),
     ],
   );
 }
 
-Widget _crearBotonRedondeado(Color color, IconData icono, String texto) {
+Widget _crearBotonRedondeado(Color color, String srcImage) {
   return ClipRect(
     child: BackdropFilter(
       filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
@@ -110,12 +96,7 @@ Widget _crearBotonRedondeado(Color color, IconData icono, String texto) {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: <Widget>[
             SizedBox(height: 5.0),
-            CircleAvatar(
-              backgroundColor: color,
-              radius: 50.0,
-              child: Icon(icono, color: Colors.white, size: 40.0),
-            ),
-            Text(texto, style: TextStyle(color: color)),
+            Image(image: AssetImage(srcImage)),
             SizedBox(height: 5.0)
           ],
         ),

@@ -46,13 +46,15 @@ class HomeMovie extends StatelessWidget {
         body: Stack(children: <Widget>[
           FondoHomes(),
           Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                SizedBox(height: 70.0),
-                _swiperTarjetas(),
-                _footer(context),
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  SizedBox(height: 120.0),
+                  _swiperTarjetas(),
+                  _footer(context),
+                ],
+              ),
             ),
           ),
         ]));
@@ -82,6 +84,7 @@ class HomeMovie extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          SizedBox(height: 30.0),
           Container(
               padding: EdgeInsets.only(left: 20.0),
               child: Text('Popular',
