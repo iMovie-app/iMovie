@@ -22,9 +22,7 @@ class Home extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 _titulos(),
-                SizedBox(
-                  height: 30,
-                ),
+                SizedBox(height: 30),
                 _botonesRedondeados(context),
               ],
             ),
@@ -65,16 +63,15 @@ Widget _botonesRedondeados(BuildContext context) {
       ]),
       TableRow(children: [
         GestureDetector(
-          child:
-              _crearBotonRedondeado(
+          child: _crearBotonRedondeado(
               Colors.purpleAccent, "assets/img/buttonSeries.png"),
           onTap: () => {Navigator.of(context).pushNamed('hometv')},
         ),
       ]),
       TableRow(children: [
         GestureDetector(
-          child: _crearBotonRedondeado(Color.fromARGB(255, 34, 159, 36),
-              "assets/img/buttonContact.png"),
+          child: _crearBotonRedondeado(
+              Color.fromARGB(255, 34, 159, 36), "assets/img/buttonContact.png"),
           onTap: () => {},
         ),
       ]),
@@ -87,19 +84,15 @@ Widget _crearBotonRedondeado(Color color, String srcImage) {
     child: BackdropFilter(
       filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
       child: Container(
-        height: 180.0,
+          height: 120.0,
         margin: EdgeInsets.all(15.0),
         decoration: BoxDecoration(
             color: Color.fromRGBO(62, 66, 107, 0.7),
             borderRadius: BorderRadius.circular(20.0)),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            SizedBox(height: 5.0),
-            Image(image: AssetImage(srcImage)),
-            SizedBox(height: 5.0)
-          ],
-        ),
+          child: Image(
+            image: AssetImage(srcImage),
+            fit: BoxFit.cover,
+          )
       ),
     ),
   );
