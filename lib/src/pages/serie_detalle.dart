@@ -39,7 +39,7 @@ class SerieDetalle extends StatelessWidget {
   Widget crearAppBar(Serie serie) {
     return SliverAppBar(
       elevation: 2.0,
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Colors.transparent,
       expandedHeight: 200.0,
       floating: false,
       pinned: true,
