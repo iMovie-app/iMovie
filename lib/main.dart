@@ -6,6 +6,7 @@ import 'package:peliculas_app/src/pages/home_movie.dart';
 import 'package:peliculas_app/src/pages/serie_detalle.dart';
 import 'package:peliculas_app/src/pages/splash_page.dart';
 import 'package:peliculas_app/src/pages/home_tv.dart';
+import 'package:peliculas_app/src/themes/text_themes.dart';
 
 import 'src/pages/pelicula_detalle.dart';
 
@@ -26,10 +27,9 @@ class MyApp extends StatelessWidget {
           'detalleserie': (BuildContext context) => SerieDetalle(),
           'actor': (BuildContext context) => ActorDetalle(),
           'actorserie': (BuildContext context) => ActorDetalleSerie(),
-          
         },
         theme: ThemeData(
-          brightness: Brightness.dark,
-        ));
+            textTheme: TextThemes.getTextTheme(),
+            backgroundColor: const Color.fromARGB(255, 19, 19, 19)));
   }
 }

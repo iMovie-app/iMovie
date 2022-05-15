@@ -19,27 +19,27 @@ class ActorDetalleSerie extends StatelessWidget {
     return Scaffold(
         backgroundColor: Color.fromARGB(255, 19, 19, 19),
         body: CustomScrollView(
-      slivers: <Widget>[
-        SerieDetalle().crearAppBar(serie),
-        SliverList(
-            delegate: SliverChildListDelegate([
-          const SizedBox(height: 10.0),
-          _character(context, actor),
-          _posterActor(context, actor),
-          _biography(actor),
-          _swiperTarjetas(actor.id),
-          SizedBox(
-            height: 20.0,
-          ),
-        ]))
-      ],
-    ));
+          slivers: <Widget>[
+            SerieDetalle().crearAppBar(serie),
+            SliverList(
+                delegate: SliverChildListDelegate([
+              const SizedBox(height: 10.0),
+              _character(context, actor),
+              _posterActor(context, actor),
+              _biography(actor),
+              _swiperTarjetas(actor.id),
+              SizedBox(
+                height: 20.0,
+              ),
+            ]))
+          ],
+        ));
   }
 
   Widget _crearAppbar(Actor actor) {
     return SliverAppBar(
       elevation: 2.0,
-      backgroundColor: Colors.deepPurple,
+      backgroundColor: Colors.transparent,
       expandedHeight: 200.0,
       floating: false,
       pinned: true,
