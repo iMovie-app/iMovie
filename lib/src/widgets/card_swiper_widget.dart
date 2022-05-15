@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper_tv/flutter_swiper.dart';
+import 'package:peliculas_app/src/widgets/fondo_homes.dart';
 
 import '../models/pelicula_model.dart';
 
@@ -19,7 +22,6 @@ class CardSwiper extends StatelessWidget {
         itemHeight: _screenSize.height * 0.5,
         itemBuilder: (BuildContext context, int index) {
           peliculas[index].uniqueId = '${peliculas[index].id}-tarjeta';
-
           return Hero(
             tag: peliculas[index].uniqueId,
             child: ClipRRect(

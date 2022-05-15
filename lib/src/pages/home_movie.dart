@@ -9,7 +9,6 @@ import '../providers/peliculas_provider.dart';
 import '../search/search_delegate.dart';
 import '../widgets/movie_horizontal.dart';
 
-
 class HomeMovie extends StatelessWidget {
   final peliculasProvider = PeliculasProvider();
 

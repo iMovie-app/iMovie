@@ -30,6 +30,7 @@ class Pelicula {
   late String overview;
   late String? releaseDate;
 
+  //constructor
   Pelicula({
     required this.voteCount,
     required this.id,
@@ -47,6 +48,7 @@ class Pelicula {
     required this.releaseDate,
   });
 
+  //Mapeado de datos
   Pelicula.fromJsonMap(Map<String, dynamic> json) {
     voteCount = json['vote_count'];
     id = json['id'];

@@ -12,7 +12,7 @@ import '../models/video_model.dart';
 class PeliculasProvider {
   String _apikey = '8f0c5d6e504bebd18c29c2c3535cec9d';
   String _url = 'api.themoviedb.org';
-  String _language = 'es-ES';
+  String _language = 'en-US';
   String _language2 = 'en-US';
 
   int _popularesPage = 0;
