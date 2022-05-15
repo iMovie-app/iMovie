@@ -66,7 +66,7 @@ Widget _botonesRedondeados(BuildContext context) {
         GestureDetector(
           child: _crearBotonRedondeado(
               Color.fromARGB(255, 34, 159, 36), "assets/img/buttonContact.png"),
-          onTap: () => {},
+          onTap: () => {Navigator.of(context).pushNamed('contact')},
         ),
       ]),
     ],

@@ -80,6 +80,8 @@ class ActorDetalleSerie extends StatelessWidget {
             child: Text(
               snapshot.data,
               textAlign: TextAlign.justify,
+              style: Theme.of(context).textTheme.bodyText2,
+              
             ),
           );
         } else {

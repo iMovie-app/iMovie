@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:peliculas_app/src/themes/app_colors.dart';
 
 class TextThemes {
-  const TextThemes._();
+  const TextThemes();
 
   static getTextTheme() {
     return TextTheme(

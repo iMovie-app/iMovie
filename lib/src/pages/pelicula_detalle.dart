@@ -1,8 +1,6 @@
 // ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import 'package:peliculas_app/src/widgets/card_swiper_widget.dart';
-import 'package:peliculas_app/src/widgets/movie_horizontal.dart';
 
 import '../models/actores_model.dart';
 import '../models/pelicula_model.dart';
@@ -90,7 +88,7 @@ class PeliculaDetalle extends StatelessWidget {
                     overflow: TextOverflow.ellipsis),
                 Row(
                   children: <Widget>[
-                    Icon(Icons.star_border),
+                    Icon(Icons.star_border, color: Colors.yellowAccent),
                     Text(pelicula.voteAverage.toString(),
                         style: Theme.of(context).textTheme.subtitle1)
                   ],

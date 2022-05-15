@@ -29,7 +29,7 @@ class DrawerMenu extends StatelessWidget {
               icon: Icons.contact_phone, text: 'Contact Info', onTap: () => {}),
           ListTile(
             title: Text('App version 1.0.0'),
-            onTap: () {},
+            onTap: () => {Navigator.of(context).pushNamed('hometv')},
           ),
           Divider(),
         ],
