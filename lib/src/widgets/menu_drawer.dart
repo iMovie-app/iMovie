@@ -1,4 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+
+import '../themes/text_themes.dart';
 
 class DrawerMenu extends StatelessWidget {
   @override
@@ -6,33 +10,41 @@ class DrawerMenu extends StatelessWidget {
     return Drawer(
       backgroundColor: Color.fromARGB(173, 37, 5, 99),
       elevation: 0,
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          _buildDrawerHeader(),
-          _buildDrawerItem(
-              icon: Icons.home,
-              text: 'Home',
-              onTap: () => {Navigator.of(context).pushNamed('home')}),
-          SizedBox(height: 10.0),
-          _buildDrawerItem(
-              icon: Icons.movie,
-              text: 'Movies',
-              onTap: () => {Navigator.of(context).pushNamed('homemovie')}),
-          SizedBox(height: 10.0),
-          _buildDrawerItem(
-              icon: Icons.tv,
-              text: 'Tv Series',
-              onTap: () => {Navigator.of(context).pushNamed('hometv')}),
-          SizedBox(height: 10.0),
-          _buildDrawerItem(
-              icon: Icons.contact_phone, text: 'Contact Info', onTap: () => {}),
-          ListTile(
-            title: Text('App version 1.0.0'),
-            onTap: () {},
-          ),
-          Divider(),
-        ],
+      child: Container(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            _buildDrawerHeader(),
+            _buildDrawerItem(
+                icon: Icons.home,
+                text: 'Home',
+                onTap: () => {Navigator.of(context).pushNamed('home')}),
+            SizedBox(height: 10.0),
+            _buildDrawerItem(
+                icon: Icons.movie,
+                text: 'Movies',
+                onTap: () => {Navigator.of(context).pushNamed('homemovie')}),
+            SizedBox(height: 10.0),
+            _buildDrawerItem(
+                icon: Icons.tv,
+                text: 'Tv Series',
+                onTap: () => {Navigator.of(context).pushNamed('hometv')}),
+            SizedBox(height: 10.0),
+            _buildDrawerItem(
+                icon: Icons.contact_phone,
+                text: 'Contact Info',
+                onTap: () => {}),
+            ListTile(
+              title: Text('App version 1.0.0',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 10.0,
+                      fontWeight: FontWeight.bold)),
+              onTap: () {},
+            ),
+            Divider(),
+          ],
+        ),
       ),
     );
   }
@@ -55,10 +67,16 @@ class DrawerMenu extends StatelessWidget {
     return ListTile(
       title: Row(
         children: <Widget>[
-          Icon(icon),
+          Icon(icon, color: Color.fromARGB(255, 206, 67, 67), size: 20.0),
           Padding(
             padding: EdgeInsets.only(left: 8.0),
-            child: Text(text!),
+            child: Text(
+              text!,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold),
+            ),
           )
         ],
       ),

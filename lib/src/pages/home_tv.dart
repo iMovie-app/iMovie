@@ -41,6 +41,7 @@ class TvHomePage extends StatelessWidget {
         // Propiedad del Scaffold que llama al menu que hemos creado en la clase DrawerMenu
         drawer: DrawerMenu(),
         body: Stack(children: <Widget>[
+          FondoHomes(),
           Container(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
