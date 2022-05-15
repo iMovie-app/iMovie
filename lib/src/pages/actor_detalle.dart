@@ -17,6 +17,7 @@ class ActorDetalle extends StatelessWidget {
     final Serie? serie = arguments['serie'];
 
     return Scaffold(
+        backgroundColor: Color.fromARGB(255, 19, 19, 19),
         body: CustomScrollView(
       slivers: <Widget>[
         PeliculaDetalle().crearAppBar(pelicula),

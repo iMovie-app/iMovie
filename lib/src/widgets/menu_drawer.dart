@@ -42,20 +42,11 @@ class DrawerMenu extends StatelessWidget {
         margin: EdgeInsets.zero,
         padding: EdgeInsets.zero,
         child: Stack(children: <Widget>[
-          CircleAvatar(
-            backgroundColor: Colors.deepPurple,
-            radius: 120.0,
-            child: Icon(Icons.abc, color: Colors.white, size: 30.0),
-            backgroundImage: AssetImage("assets/img/iMovie.jpeg"),
-          ),
-          Positioned(
-              bottom: 20.0,
-              left: 20.0,
-              child: Text("",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w500))),
+          Center(
+            child: Image.asset(
+              ("assets/img/ic_launcher.png"),
+            ),
+          )
         ]));
   }
 

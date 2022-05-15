@@ -9,57 +9,23 @@ import 'package:peliculas_app/src/widgets/menu_drawer.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    /*return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        title: Text(''),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: Stack(
-        children: <Widget>[
-          FondoHomes(),
-          SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                _titulos(),
-                SizedBox(height: 30),
-                _botonesRedondeados(context),
-              ],
-            ),
-          )
-        ],
-      ),
-      drawer: DrawerMenu(),
-    ); */
     return Scaffold(
-        body: CustomScrollView(
-          slivers: <Widget>[
-            _titulos(),
-            SliverList(
-              delegate: SliverChildListDelegate([_botonesRedondeados(context)]),
-            )
-          ],
-        ),
+        body: Stack(children: <Widget>[
+          FondoHomes(),
+          CustomScrollView(
+            slivers: <Widget>[
+              _titulos(),
+              SliverList(
+                delegate:
+                    SliverChildListDelegate([_botonesRedondeados(context)]),
+              )
+            ],
+          ),
+        ]),
         drawer: DrawerMenu());
   }
 
-  Widget _titulos() {
-    /* return SafeArea(
-      child: Container(
-        padding: EdgeInsets.all(20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Image(image: AssetImage("assets/img/iMOVIE_logo(500x250).png")),
-            SizedBox(height: 10.0),
-            Text('Find information about movies and TV series ',
-                style: TextStyle(color: Colors.white, fontSize: 18.0)),
-          ],
-        ),
-      ),
-    );*/
+Widget _titulos() {
     return SliverAppBar(
       backgroundColor: Colors.transparent,
       expandedHeight: 230.0,

@@ -18,12 +18,12 @@ class FondoHomes extends StatelessWidget {
               begin: FractionalOffset(0.0, 0.6),
               end: FractionalOffset(0.0, 1.0),
               colors: [
-            Color.fromARGB(255, 0, 0, 0),
-            Color.fromARGB(255, 114, 120, 184)
+            Color.fromARGB(255, 19, 19, 19),
+            Color.fromARGB(255, 19, 19, 19)
           ])),
     );
 
-    final cajaRosa = Transform.rotate(
+    final caja = Transform.rotate(
         angle: -pi / 5.0,
         child: Container(
           height: 360.0,
@@ -32,12 +32,12 @@ class FondoHomes extends StatelessWidget {
               borderRadius: BorderRadius.circular(80.0),
               gradient: LinearGradient(colors: [
                 Color.fromARGB(255, 37, 2, 23),
-                Colors.deepPurple,
+                Color.fromARGB(255, 37, 5, 99),
               ])),
         ));
 
     return Stack(
-      children: <Widget>[gradiente, Positioned(top: -100.0, child: cajaRosa)],
+      children: <Widget>[gradiente, Positioned(top: -100.0, child: caja)],
     );
   }
 }

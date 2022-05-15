@@ -18,6 +18,7 @@ class PeliculaDetalle extends StatelessWidget {
     final peliProvider = PeliculasProvider();
 
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 19, 19, 19),
       body: CustomScrollView(
         slivers: <Widget>[
           crearAppBar(pelicula),
