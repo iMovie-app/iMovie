@@ -27,8 +27,8 @@ class SerieDetalle extends StatelessWidget {
                 posterTitulo(context, serie),
                 _descripcion(serie),
                 _youtubeTrailer(context, serie),
-                _crearCasting(serie),
-                _similarMovies(serie),
+                _crearCasting(context, serie),
+                _similarMovies(context, serie),
               ]),
             )
           ],
@@ -90,9 +90,6 @@ class SerieDetalle extends StatelessWidget {
                 Text(serie.name,
                     style: Theme.of(context).textTheme.headline5,
                     overflow: TextOverflow.ellipsis),
-                Text(serie.numberOfSeasons.toString(),
-                    style: Theme.of(context).textTheme.subtitle1,
-                    overflow: TextOverflow.ellipsis),
                 Row(
                   children: <Widget>[
                     Icon(Icons.star_border, color: Colors.yellowAccent),
@@ -118,16 +115,22 @@ class SerieDetalle extends StatelessWidget {
     );
   }
 
-  Widget _crearCasting(Serie serie) {
-    return FutureBuilder(
-      future: seriesProvider.getCast(serie.id.toString()),
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        if (snapshot.hasData) {
-          return _crearActoresPageView(snapshot.data, serie);
-        } else {
-          return Center(child: CircularProgressIndicator());
-        }
-      },
+  Widget _crearCasting(context, Serie serie) {
+    return Column(
+      children: [
+        Text('Cast', style: Theme.of(context).textTheme.headline5),
+        SizedBox(height: 20.0),
+        FutureBuilder(
+          future: seriesProvider.getCast(serie.id.toString()),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.hasData) {
+              return _crearActoresPageView(snapshot.data, serie);
+            } else {
+              return Center(child: CircularProgressIndicator());
+            }
+          },
+        ),
+      ],
     );
   }
 
@@ -190,6 +193,7 @@ class SerieDetalle extends StatelessWidget {
               style: Theme.of(context).textTheme.headline5,
             ),
           ),
+          SizedBox(height: 20.0),
           FutureBuilder(
             future: seriesProvider.buscarTrailer(serie.id),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -223,16 +227,22 @@ class SerieDetalle extends StatelessWidget {
   }
 
   //Similar movies
-  Widget _similarMovies(Serie serie) {
-    return FutureBuilder(
-      future: seriesProvider.getSimilarSeries(serie.id),
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        if (snapshot.hasData) {
-          return _crearSimilarPageView(snapshot.data);
-        } else {
-          return Center(child: CircularProgressIndicator());
-        }
-      },
+  Widget _similarMovies(context, Serie serie) {
+    return Column(
+      children: [
+        Text('Similar Tv Series', style: Theme.of(context).textTheme.headline5),
+        SizedBox(height: 20.0),
+        FutureBuilder(
+          future: seriesProvider.getSimilarSeries(serie.id),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.hasData) {
+              return _crearSimilarPageView(snapshot.data);
+            } else {
+              return Center(child: CircularProgressIndicator());
+            }
+          },
+        ),
+      ],
     );
   }
 

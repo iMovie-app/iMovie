@@ -28,8 +28,8 @@ class PeliculaDetalle extends StatelessWidget {
                 posterTitulo(context, pelicula),
                 _descripcion(pelicula, context),
                 _youtubeTrailer(context, pelicula),
-                _crearCasting(pelicula),
-                _similarMovies(pelicula),
+                _crearCasting(context, pelicula),
+                _similarMovies(context, pelicula),
               ]),
             )
           ],
@@ -122,16 +122,22 @@ class PeliculaDetalle extends StatelessWidget {
     );
   }
 
-  Widget _crearCasting(Pelicula pelicula) {
-    return FutureBuilder(
-      future: peliProvider.getCast(pelicula.id.toString()),
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        if (snapshot.hasData) {
-          return _crearActoresPageView(snapshot.data, pelicula);
-        } else {
-          return Center(child: CircularProgressIndicator());
-        }
-      },
+  Widget _crearCasting(context, Pelicula pelicula) {
+    return Column(
+      children: [
+        Text('Cast', style: Theme.of(context).textTheme.headline5),
+        SizedBox(height: 20.0),
+        FutureBuilder(
+          future: peliProvider.getCast(pelicula.id.toString()),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.hasData) {
+              return _crearActoresPageView(snapshot.data, pelicula);
+            } else {
+              return Center(child: CircularProgressIndicator());
+            }
+          },
+        ),
+      ],
     );
   }
 
@@ -195,6 +201,7 @@ class PeliculaDetalle extends StatelessWidget {
               style: Theme.of(context).textTheme.headline5,
             ),
           ),
+          SizedBox(height: 20.0),
           FutureBuilder(
             future: peliProvider.buscarTrailer(pelicula.id),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -228,16 +235,22 @@ class PeliculaDetalle extends StatelessWidget {
   }
 
   //Similar movies
-  Widget _similarMovies(Pelicula pelicula) {
-    return FutureBuilder(
-      future: peliProvider.getSimilarMovies(pelicula.id),
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        if (snapshot.hasData) {
-          return _crearSimilarPageView(snapshot.data);
-        } else {
-          return Center(child: CircularProgressIndicator());
-        }
-      },
+  Widget _similarMovies(context, Pelicula pelicula) {
+    return Column(
+      children: [
+        Text('Similar Movies', style: Theme.of(context).textTheme.headline5),
+        SizedBox(height: 20.0),
+        FutureBuilder(
+          future: peliProvider.getSimilarMovies(pelicula.id),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.hasData) {
+              return _crearSimilarPageView(snapshot.data);
+            } else {
+              return Center(child: CircularProgressIndicator());
+            }
+          },
+        ),
+      ],
     );
   }
 

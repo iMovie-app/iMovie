@@ -19,29 +19,24 @@ class Serie {
   late List<int> genreIds;
   late int id;
   late String name;
-  late List<String> originCountry;
   late String originalLanguage;
   late String originalName;
   late String overview;
   late double popularity;
   late String? posterPath;
   late double voteAverage;
-  late int? numberOfSeasons;
 
-  Serie({
-    required this.backdropPath,
-    required this.genreIds,
-    required this.id,
-    required this.name,
-    required this.originCountry,
-    required this.originalLanguage,
-    required this.originalName,
-    required this.overview,
-    required this.popularity,
-    required this.posterPath,
-    required this.voteAverage,
-    required this.numberOfSeasons,
-  });
+  Serie(
+      {required this.backdropPath,
+      required this.genreIds,
+      required this.id,
+      required this.name,
+      required this.originalLanguage,
+      required this.originalName,
+      required this.overview,
+      required this.popularity,
+      required this.posterPath,
+      required this.voteAverage});
 
   Serie.fromJsonMap(Map<String, dynamic> json) {
     backdropPath = json['backdrop_path'];
@@ -53,7 +48,6 @@ class Serie {
     popularity = json['popularity'] / 1;
     posterPath = json['poster_path'];
     voteAverage = json['vote_average'] / 1;
-    numberOfSeasons = json['number_of_seasons'];
   }
 
   getPosterImg() {

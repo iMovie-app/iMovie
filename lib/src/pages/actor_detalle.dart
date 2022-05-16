@@ -26,11 +26,10 @@ class ActorDetalle extends StatelessWidget {
           PeliculaDetalle().crearAppBar(pelicula),
           SliverList(
               delegate: SliverChildListDelegate([
-            const SizedBox(height: 10.0),
-            _character(context, actor),
+            const SizedBox(height: 20.0),
             _posterActor(context, actor),
             _biography(actor),
-            _swiperTarjetas(actor.id),
+            _swiperTarjetas(context, actor.id),
             SizedBox(
               height: 20.0,
             ),
@@ -48,38 +47,6 @@ class ActorDetalle extends StatelessWidget {
               .pushNamedAndRemoveUntil('home', (Route<dynamic> route) => false);
         },
       ),
-    );
-  }
-
-  Widget _crearAppbar(Actor actor) {
-    return SliverAppBar(
-      elevation: 2.0,
-      backgroundColor: Colors.transparent,
-      expandedHeight: 200.0,
-      floating: false,
-      pinned: true,
-      flexibleSpace: FlexibleSpaceBar(
-        centerTitle: true,
-        title: Text(
-          actor.name,
-          style: const TextStyle(color: Colors.white, fontSize: 16.0),
-        ),
-        background: FadeInImage(
-          image: NetworkImage(actor.getFoto()),
-          placeholder: const AssetImage('assets/img/loading.gif'),
-          fadeInDuration: const Duration(microseconds: 150),
-          fit: BoxFit.cover,
-        ),
-      ),
-    );
-  }
-
-  Widget _character(BuildContext context, Actor actor) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
-      child: Text(actor.character,
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.headlineSmall),
     );
   }
 
@@ -108,21 +75,27 @@ class ActorDetalle extends StatelessWidget {
     );
   }
 
-  Widget _swiperTarjetas(int actorId) {
-    return FutureBuilder(
-      future: PeliculasProvider().getPeliculasByIdActor(actorId),
-      builder: (BuildContext context, AsyncSnapshot snapshot) {
-        if (snapshot.hasData) {
-          return CardSwiper(peliculas: snapshot.data);
-        } else {
-          return Container(
-            height: 400.0,
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
-        }
-      },
+  Widget _swiperTarjetas(context, int actorId) {
+    return Column(
+      children: [
+        Text('Filmography', style: Theme.of(context).textTheme.headline5),
+        SizedBox(height: 20.0),
+        FutureBuilder(
+          future: PeliculasProvider().getPeliculasByIdActor(actorId),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (snapshot.hasData) {
+              return CardSwiper(peliculas: snapshot.data);
+            } else {
+              return Container(
+                height: 400.0,
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              );
+            }
+          },
+        ),
+      ],
     );
   }
 
