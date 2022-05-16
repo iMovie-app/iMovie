@@ -18,13 +18,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: 'home',
+        initialRoute: 'splash',
         routes: {
           'splash': (BuildContext context) => SplashPage(),
           'home': (BuildContext context) => Home(),
           'homemovie': (BuildContext context) => HomeMovie(),
           'hometv': (BuildContext context) => TvHomePage(),
-        'contact': (BuildContext context) => Contact(),
+          'contact': (BuildContext context) => Contact(),
           'detalle': (BuildContext context) => PeliculaDetalle(),
           'detalleserie': (BuildContext context) => SerieDetalle(),
           'actor': (BuildContext context) => ActorDetalle(),

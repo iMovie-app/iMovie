@@ -1,8 +1,9 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:peliculas_app/src/pages/home.dart';
-import 'package:peliculas_app/src/pages/home_movie.dart';
 
 class SplashPage extends StatefulWidget {
 
@@ -16,7 +17,9 @@ class _SplashPageState extends State<SplashPage>{
 void initState() {
   super.initState();
 
-  Timer(const Duration(seconds: 4), () =>
+    Timer(
+        const Duration(seconds: 4),
+        () =>
       Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => Home())));
 
@@ -25,13 +28,14 @@ void initState() {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Color.fromARGB(255, 24, 24, 24),
       body: Stack(
         children: <Widget>[
           Container(
             decoration: BoxDecoration(
-              image:DecorationImage(
-                image:AssetImage("assets/img/iMovie.jpeg"),
-                fit: BoxFit.cover,
+              image: DecorationImage(
+                image: AssetImage("assets/img/iMOVIE_gif_splash2.gif"),
+                fit: BoxFit.fitWidth,
               ),
             )
           )

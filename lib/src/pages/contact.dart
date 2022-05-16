@@ -13,7 +13,7 @@ class Contact extends StatelessWidget {
               _titulos(),
               SliverList(
                 delegate: SliverChildListDelegate([
-                  posterContact(
+                  posterContactLeft(
                       context,
                       AssetImage("assets/img/lobezno.png"),
                       "Iván Gaitán Muñoz",
@@ -22,7 +22,7 @@ class Contact extends StatelessWidget {
                   SizedBox(
                     height: 20.0,
                   ),
-                  posterContact(
+                  posterContactRigth(
                       context,
                       AssetImage("assets/img/superman.png"),
                       "Guillermo Pérez Arias",
@@ -31,7 +31,7 @@ class Contact extends StatelessWidget {
                   SizedBox(
                     height: 20.0,
                   ),
-                  posterContact(
+                  posterContactLeft(
                       context,
                       AssetImage("assets/img/flash.png"),
                       "Miguel Pérez Larren",
@@ -65,38 +65,79 @@ class Contact extends StatelessWidget {
   }
 }
 
-Widget posterContact(BuildContext context, AssetImage imagen, String nombre,
+Widget posterContactLeft(BuildContext context, AssetImage imagen, String nombre,
     String linkedin, String gitHub) {
-  return Container(
-    child: Row(
-      children: <Widget>[
-        ClipRRect(
-          borderRadius: BorderRadius.circular(20.0),
-          child: Image(
-            image: imagen,
-            height: 150.0,
+  return Padding(
+    padding: const EdgeInsets.all(15.0),
+    child: Container(
+      child: Row(
+        children: <Widget>[
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: Image(
+              image: imagen,
+              height: 150.0,
+              width: 160,
+            ),
           ),
-        ),
-        Flexible(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Icon(Icons.star_border, color: Colors.yellowAccent),
-              Text(nombre,
-                  style: Theme.of(context).textTheme.headline6,
-                  overflow: TextOverflow.ellipsis),
-              Text(linkedin,
-                  style: Theme.of(context).textTheme.subtitle1,
-                  overflow: TextOverflow.ellipsis),
-              Row(
-                children: <Widget>[
-                  Text(gitHub, style: Theme.of(context).textTheme.subtitle1),
-                ],
-              ),
-            ],
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Icon(Icons.star_border, color: Colors.yellowAccent),
+                Text(nombre,
+                    style: Theme.of(context).textTheme.headline6,
+                    overflow: TextOverflow.ellipsis),
+                Text(linkedin,
+                    style: Theme.of(context).textTheme.subtitle1,
+                    overflow: TextOverflow.ellipsis),
+                Text(gitHub,
+                    style: Theme.of(context).textTheme.subtitle1,
+                    overflow: TextOverflow.ellipsis),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
+    ),
+  );
+}
+
+Widget posterContactRigth(BuildContext context, AssetImage imagen,
+    String nombre, String linkedin, String gitHub) {
+  return Padding(
+    padding: const EdgeInsets.all(20.0),
+    child: Container(
+      child: Row(
+        children: <Widget>[
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Icon(Icons.star_border, color: Colors.yellowAccent),
+                Text(nombre,
+                    style: Theme.of(context).textTheme.headline6,
+                    overflow: TextOverflow.ellipsis),
+                Text(linkedin,
+                    style: Theme.of(context).textTheme.subtitle1,
+                    overflow: TextOverflow.ellipsis),
+                Text(gitHub,
+                    style: Theme.of(context).textTheme.subtitle1,
+                    overflow: TextOverflow.ellipsis),
+                ),
+              ],
+            ),
+          ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: Image(
+              image: imagen,
+              height: 150.0,
+              width: 160,
+            ),
+          ),
+        ],
+      ),
     ),
   );
 }
