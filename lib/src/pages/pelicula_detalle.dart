@@ -188,20 +188,23 @@ class PeliculaDetalle extends StatelessWidget {
             future: peliProvider.buscarTrailer(pelicula.id),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.hasData) {
-                return YoutubePlayer(
-                  controller: YoutubePlayerController(
-                    initialVideoId: snapshot.data,
-                    flags: YoutubePlayerFlags(
-                      autoPlay: false,
-                      mute: false,
+                return YoutubePlayerBuilder(
+                  player: YoutubePlayer(
+                    controller: YoutubePlayerController(
+                      initialVideoId: snapshot.data,
+                      flags: YoutubePlayerFlags(
+                        autoPlay: false,
+                        mute: false,
+                      ),
+                    ),
+                    showVideoProgressIndicator: true,
+                    progressIndicatorColor: Colors.blueAccent,
+                    progressColors: ProgressBarColors(
+                      playedColor: Colors.amber,
+                      handleColor: Colors.amberAccent,
                     ),
                   ),
-                  showVideoProgressIndicator: true,
-                  progressIndicatorColor: Colors.blueAccent,
-                  progressColors: ProgressBarColors(
-                    playedColor: Colors.amber,
-                    handleColor: Colors.amberAccent,
-                  ),
+                  builder: (context, player) => player,
                 );
               } else {
                 return Center(child: CircularProgressIndicator());
