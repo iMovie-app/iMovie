@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:peliculas_app/src/widgets/fondo_homes.dart';
 import 'package:peliculas_app/src/widgets/menu_drawer.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class Contact extends StatelessWidget {
   @override
@@ -93,11 +94,12 @@ Widget posterContactLeft(BuildContext context, AssetImage imagen, String nombre,
                     child: Text(linkedin,
                         style: Theme.of(context).textTheme.subtitle1,
                         overflow: TextOverflow.ellipsis),
-                    onTap: () => launch(
-                        'https://docs.flutter.io/flutter/services/UrlLauncher-class.html')),
-                Text(gitHub,
-                    style: Theme.of(context).textTheme.subtitle1,
-                    overflow: TextOverflow.ellipsis),
+                    onTap: () => launchUrlString('https://$linkedin')),
+                InkWell(
+                    child: Text(gitHub,
+                        style: Theme.of(context).textTheme.subtitle1,
+                        overflow: TextOverflow.ellipsis),
+                    onTap: () => launchUrlString('https://$gitHub')),
               ],
             ),
           ),
@@ -122,12 +124,16 @@ Widget posterContactRigth(BuildContext context, AssetImage imagen,
                 Text(nombre,
                     style: Theme.of(context).textTheme.headline5,
                     overflow: TextOverflow.ellipsis),
-                Text(linkedin,
-                    style: Theme.of(context).textTheme.subtitle1,
-                    overflow: TextOverflow.ellipsis),
-                Text(gitHub,
-                    style: Theme.of(context).textTheme.subtitle1,
-                    overflow: TextOverflow.ellipsis),
+                InkWell(
+                    child: Text(linkedin,
+                        style: Theme.of(context).textTheme.subtitle1,
+                        overflow: TextOverflow.ellipsis),
+                    onTap: () => launchUrlString('https://$linkedin')),
+                InkWell(
+                    child: Text(gitHub,
+                        style: Theme.of(context).textTheme.subtitle1,
+                        overflow: TextOverflow.ellipsis),
+                    onTap: () => launchUrlString('https://$gitHub')),
               ],
             ),
           ),
