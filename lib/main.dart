@@ -24,14 +24,14 @@ class MyApp extends StatelessWidget {
           'home': (BuildContext context) => Home(),
           'homemovie': (BuildContext context) => HomeMovie(),
           'hometv': (BuildContext context) => TvHomePage(),
-        'contact': (BuildContext context) => Contact(),
+          'contact': (BuildContext context) => Contact(),
           'detalle': (BuildContext context) => PeliculaDetalle(),
           'detalleserie': (BuildContext context) => SerieDetalle(),
           'actor': (BuildContext context) => ActorDetalle(),
           'actorserie': (BuildContext context) => ActorDetalleSerie(),
         },
         theme: ThemeData(
-            backgroundColor: const Color.fromARGB(255, 19, 19, 19)));
             textTheme: TextThemes.getTextTheme(),
+            backgroundColor: const Color.fromARGB(255, 19, 19, 19)));
   }
 }
