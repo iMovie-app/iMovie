@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:peliculas_app/src/widgets/fondo_homes.dart';
 import 'package:peliculas_app/src/widgets/menu_drawer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Contact extends StatelessWidget {
   @override
@@ -17,7 +18,7 @@ class Contact extends StatelessWidget {
                       context,
                       AssetImage("assets/img/lobezno.png"),
                       "Iván Gaitán Muñoz",
-                      "www.linkedin.com/in/igaitanm",
+                      "linkedin.com/in/igaitanm",
                       "github.com/IGaitanM"),
                   SizedBox(
                     height: 20.0,
@@ -26,7 +27,7 @@ class Contact extends StatelessWidget {
                       context,
                       AssetImage("assets/img/superman.png"),
                       "Guillermo Pérez Arias",
-                      "www.linkedin.com/in/guiller91",
+                      "linkedin.com/in/guiller91",
                       "github.com/guiller91"),
                   SizedBox(
                     height: 20.0,
@@ -35,7 +36,7 @@ class Contact extends StatelessWidget {
                       context,
                       AssetImage("assets/img/flash.png"),
                       "Miguel Pérez Larren",
-                      "www.linkedin.com/in/miguel-pérez-larrén-5bb5b2123/",
+                      "linkedin.com/in/miguel-pérez-larrén-5bb5b2123/",
                       "github.com/miguelperezlarren")
                 ]),
               )
@@ -86,11 +87,14 @@ Widget posterContactLeft(BuildContext context, AssetImage imagen, String nombre,
               children: <Widget>[
                 Icon(Icons.star_border, color: Colors.yellowAccent),
                 Text(nombre,
-                    style: Theme.of(context).textTheme.headline6,
+                    style: Theme.of(context).textTheme.headline5,
                     overflow: TextOverflow.ellipsis),
-                Text(linkedin,
-                    style: Theme.of(context).textTheme.subtitle1,
-                    overflow: TextOverflow.ellipsis),
+                InkWell(
+                    child: Text(linkedin,
+                        style: Theme.of(context).textTheme.subtitle1,
+                        overflow: TextOverflow.ellipsis),
+                    onTap: () => launch(
+                        'https://docs.flutter.io/flutter/services/UrlLauncher-class.html')),
                 Text(gitHub,
                     style: Theme.of(context).textTheme.subtitle1,
                     overflow: TextOverflow.ellipsis),
@@ -116,7 +120,7 @@ Widget posterContactRigth(BuildContext context, AssetImage imagen,
               children: <Widget>[
                 Icon(Icons.star_border, color: Colors.yellowAccent),
                 Text(nombre,
-                    style: Theme.of(context).textTheme.headline6,
+                    style: Theme.of(context).textTheme.headline5,
                     overflow: TextOverflow.ellipsis),
                 Text(linkedin,
                     style: Theme.of(context).textTheme.subtitle1,
@@ -124,7 +128,6 @@ Widget posterContactRigth(BuildContext context, AssetImage imagen,
                 Text(gitHub,
                     style: Theme.of(context).textTheme.subtitle1,
                     overflow: TextOverflow.ellipsis),
-                ),
               ],
             ),
           ),

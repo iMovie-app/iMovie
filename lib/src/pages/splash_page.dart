@@ -18,7 +18,7 @@ void initState() {
   super.initState();
 
     Timer(
-        const Duration(seconds: 4),
+        const Duration(seconds: 7),
         () =>
       Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => Home())));

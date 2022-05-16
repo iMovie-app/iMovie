@@ -134,7 +134,7 @@ class ActorDetalle extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(actor.name,
-                    style: Theme.of(context).textTheme.headline6,
+                    style: Theme.of(context).textTheme.headline5,
                     overflow: TextOverflow.ellipsis),
                 Text(actor.character,
                     style: Theme.of(context).textTheme.subtitle1,

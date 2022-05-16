@@ -54,7 +54,7 @@ class TextThemes {
   static TextStyle get _whiteHeadLine6 {
     return _poppinsTextTheme.headline6!.copyWith(
       fontSize: 20.0,
-      color: Colors.white,
+      color: Colors.black,
     );
   }
 }

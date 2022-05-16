@@ -58,7 +58,7 @@ class DataSearch extends SearchDelegate {
       child: Container(
         height: 100.0,
         width: 100.0,
-        color: Colors.blueAccent,
+        color: Colors.deepPurple,
         child: Text(seleccion),
       ),
     );
@@ -86,8 +86,10 @@ class DataSearch extends SearchDelegate {
                   width: 50.0,
                   fit: BoxFit.contain,
                 ),
-                title: Text(pelicula.title),
-                subtitle: Text(pelicula.originalTitle),
+                title:
+                    Text(pelicula.title, style: TextStyle(color: Colors.white)),
+                subtitle: Text(pelicula.originalTitle,
+                    style: TextStyle(color: Colors.white)),
                 onTap: () {
                   close(context, null);
                   pelicula.uniqueId = '';

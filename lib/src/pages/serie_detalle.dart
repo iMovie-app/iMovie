@@ -79,7 +79,7 @@ class SerieDetalle extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(serie.name,
-                    style: Theme.of(context).textTheme.headline6,
+                    style: Theme.of(context).textTheme.headline5,
                     overflow: TextOverflow.ellipsis),
                 Text(serie.numberOfSeasons.toString(),
                     style: Theme.of(context).textTheme.subtitle1,
@@ -181,7 +181,7 @@ class SerieDetalle extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: Text(
               'Trailer',
-              style: Theme.of(context).textTheme.headline6,
+              style: Theme.of(context).textTheme.headline5,
             ),
           ),
           FutureBuilder(
