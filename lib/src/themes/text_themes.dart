@@ -12,6 +12,7 @@ class TextThemes {
       subtitle1: _whiteSubtitle1,
       button: _whiteButtonText,
       bodyText2: _whiteBodyText2,
+      caption: _captionText,
     );
   }
 
@@ -19,6 +20,11 @@ class TextThemes {
 
   static TextStyle get _whiteButtonText => _poppinsTextTheme.button!.copyWith(
         fontSize: 14.0,
+        color: Colors.white,
+      );
+
+  static TextStyle get _captionText => _poppinsTextTheme.button!.copyWith(
+        fontSize: 12.0,
         color: Colors.white,
       );
 
