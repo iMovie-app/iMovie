@@ -16,25 +16,35 @@ class PeliculaDetalle extends StatelessWidget {
     final peliProvider = PeliculasProvider();
 
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 19, 19, 19),
-      body: CustomScrollView(
-        slivers: <Widget>[
-          crearAppBar(pelicula),
-          SliverList(
-            delegate: SliverChildListDelegate([
-              SizedBox(
-                height: 10.0,
-              ),
-              posterTitulo(context, pelicula),
-              _descripcion(pelicula, context),
-              _youtubeTrailer(context, pelicula),
-              _crearCasting(pelicula),
-              _similarMovies(pelicula),
-            ]),
-          )
-        ],
-      ),
-    );
+        backgroundColor: Color.fromARGB(255, 19, 19, 19),
+        body: CustomScrollView(
+          slivers: <Widget>[
+            crearAppBar(pelicula),
+            SliverList(
+              delegate: SliverChildListDelegate([
+                SizedBox(
+                  height: 10.0,
+                ),
+                posterTitulo(context, pelicula),
+                _descripcion(pelicula, context),
+                _youtubeTrailer(context, pelicula),
+                _crearCasting(pelicula),
+                _similarMovies(pelicula),
+              ]),
+            )
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          splashColor: Color.fromARGB(255, 37, 5, 99),
+          backgroundColor: Color.fromARGB(225, 241, 36, 36),
+          child: Icon(
+            Icons.home,
+          ),
+          onPressed: () {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                'home', (Route<dynamic> route) => false);
+          },
+        ));
   }
 
   Widget crearAppBar(Pelicula pelicula) {
