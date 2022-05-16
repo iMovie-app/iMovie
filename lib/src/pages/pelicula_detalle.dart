@@ -83,7 +83,7 @@ class PeliculaDetalle extends StatelessWidget {
                 Text(pelicula.title,
                     style: Theme.of(context).textTheme.headline6,
                     overflow: TextOverflow.ellipsis),
-                Text(pelicula.originalTitle,
+                Text(pelicula.releaseDate.toString(),
                     style: Theme.of(context).textTheme.subtitle1,
                     overflow: TextOverflow.ellipsis),
                 Row(
