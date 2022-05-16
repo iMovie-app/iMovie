@@ -26,7 +26,7 @@ class Serie {
   late double popularity;
   late String? posterPath;
   late double voteAverage;
-  late int numberOfSeasons;
+  late int? numberOfSeasons;
 
   Serie({
     required this.backdropPath,
