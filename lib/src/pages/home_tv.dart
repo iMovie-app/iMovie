@@ -37,19 +37,23 @@ class TvHomePage extends StatelessWidget {
             )
           ],
         ),
-
+  
         // Propiedad del Scaffold que llama al menu que hemos creado en la clase DrawerMenu
         drawer: DrawerMenu(),
         body: Stack(children: <Widget>[
           FondoHomes(),
           Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                SizedBox(height: 70.0),
-                _swiperTarjetas(),
-                _footer(context),
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  SizedBox(
+                    height: 120.0,
+                  ),
+                  _swiperTarjetas(),
+                  _footer(context),
+                ],
+              ),
             ),
           ),
         ]));
@@ -79,10 +83,13 @@ class TvHomePage extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          SizedBox(
+            height: 20.0,
+          ),
           Container(
               padding: EdgeInsets.only(left: 20.0),
               child: Text('Popular',
-                  style: Theme.of(context).textTheme.subtitle1)),
+                  style: Theme.of(context).textTheme.headline6)),
           SizedBox(height: 30.0),
           StreamBuilder(
             stream: seriesProvider.popularesStream,

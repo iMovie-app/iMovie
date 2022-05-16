@@ -30,9 +30,15 @@ class DrawerMenu extends StatelessWidget {
               onTap: () => {Navigator.of(context).pushNamed('hometv')}),
           SizedBox(height: 10.0),
           _buildDrawerItem(
-              icon: Icons.contact_phone, text: 'Contact Info', onTap: () => {}),
+              icon: Icons.contact_phone,
+              text: 'Contact Info',
+              onTap: () => {Navigator.of(context).pushNamed('contact')}),
           ListTile(
-            title: Text('App version 1.0.0'),
+            title: Text(
+              'App version 1.0.0',
+              style: Theme.of(context).textTheme.subtitle2,
+            ),
+            
             onTap: () {},
           ),
           Divider(),

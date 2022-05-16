@@ -26,6 +26,7 @@ class Serie {
   late double popularity;
   late String? posterPath;
   late double voteAverage;
+  late int numberOfSeasons;
 
   Serie({
     required this.backdropPath,
@@ -39,6 +40,7 @@ class Serie {
     required this.popularity,
     required this.posterPath,
     required this.voteAverage,
+    required this.numberOfSeasons,
   });
 
   Serie.fromJsonMap(Map<String, dynamic> json) {
@@ -51,6 +53,7 @@ class Serie {
     popularity = json['popularity'] / 1;
     posterPath = json['poster_path'];
     voteAverage = json['vote_average'] / 1;
+    numberOfSeasons = json['number_of_seasons'];
   }
 
   getPosterImg() {

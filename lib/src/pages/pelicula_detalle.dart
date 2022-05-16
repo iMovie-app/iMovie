@@ -26,7 +26,7 @@ class PeliculaDetalle extends StatelessWidget {
                 height: 10.0,
               ),
               posterTitulo(context, pelicula),
-              _descripcion(pelicula),
+              _descripcion(pelicula, context),
               _youtubeTrailer(context, pelicula),
               _crearCasting(pelicula),
               _similarMovies(pelicula),
@@ -101,11 +101,12 @@ class PeliculaDetalle extends StatelessWidget {
     );
   }
 
-  Widget _descripcion(Pelicula pelicula) {
+  Widget _descripcion(Pelicula pelicula, context) {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
       child: Text(
         pelicula.overview,
+        style: Theme.of(context).textTheme.bodyText2,
         textAlign: TextAlign.justify,
       ),
     );

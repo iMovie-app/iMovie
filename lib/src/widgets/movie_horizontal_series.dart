@@ -21,7 +21,7 @@ class MovieHorizontalSeries extends StatelessWidget {
     });
 
     return Container(
-      height: _screenSize.height * 0.27,
+      height: _screenSize.height * 0.48,
       child: PageView.builder(
         pageSnapping: false,
         controller: _pageController,
@@ -75,8 +75,8 @@ class MovieHorizontalSeries extends StatelessWidget {
         margin: EdgeInsets.only(right: 10.0),
         child: Column(
           children: <Widget>[
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
+            Expanded(
+              
               child: FadeInImage(
                 image: NetworkImage(pelicula.getPosterImg()),
                 placeholder: AssetImage('assets/img/no-image.jpg'),

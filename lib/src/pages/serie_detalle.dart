@@ -47,10 +47,9 @@ class SerieDetalle extends StatelessWidget {
         centerTitle: true,
         title: Text(serie.name,
             style: TextStyle(color: Colors.white, fontSize: 16.0)),
-        background: FadeInImage(
+        background: Image(
           image: NetworkImage(serie.getBackgroundImg()),
-          placeholder: AssetImage('assets/img/loading.gif'),
-          fadeInDuration: Duration(milliseconds: 150),
+          
           fit: BoxFit.cover,
         ),
       ),
@@ -82,7 +81,7 @@ class SerieDetalle extends StatelessWidget {
                 Text(serie.name,
                     style: Theme.of(context).textTheme.headline6,
                     overflow: TextOverflow.ellipsis),
-                Text(serie.originalName,
+                Text(serie.numberOfSeasons.toString(),
                     style: Theme.of(context).textTheme.subtitle1,
                     overflow: TextOverflow.ellipsis),
                 Row(
@@ -143,9 +142,9 @@ class SerieDetalle extends StatelessWidget {
           message: actor.character,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20.0),
-            child: FadeInImage(
+            child: Image(
               image: NetworkImage(actor.getFoto()),
-              placeholder: const AssetImage('assets/img/no-image.jpg'),
+             
               height: 150.0,
               fit: BoxFit.cover,
             ),
@@ -161,9 +160,12 @@ class SerieDetalle extends StatelessWidget {
     return GestureDetector(
       child: tarjeta,
       onTap: () {
-        Navigator.pushNamed(context, 'actorserie', arguments: {
+        Navigator.of(context, rootNavigator: true)
+            .pushNamed('actorserie', arguments: {
           'serie': serie,
           'actor': actor,
+        
+
         });
       },
     );

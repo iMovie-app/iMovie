@@ -144,7 +144,7 @@ class ActorDetalleSerie extends StatelessWidget {
                     overflow: TextOverflow.ellipsis),
                 Row(
                   children: <Widget>[
-                    Icon(Icons.star_border),
+                    Icon(Icons.star_border, color: Colors.yellowAccent),
                     Text(actor.popularity.toString(),
                         style: Theme.of(context).textTheme.subtitle1)
                   ],
