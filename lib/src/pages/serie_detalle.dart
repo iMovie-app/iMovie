@@ -15,25 +15,35 @@ class SerieDetalle extends StatelessWidget {
     final seriesProvider = SeriesProvider();
 
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 19, 19, 19),
-      body: CustomScrollView(
-        slivers: <Widget>[
-          crearAppBar(serie),
-          SliverList(
-            delegate: SliverChildListDelegate([
-              SizedBox(
-                height: 10.0,
-              ),
-              posterTitulo(context, serie),
-              _descripcion(serie),
-              _youtubeTrailer(context, serie),
-              _crearCasting(serie),
-              _similarMovies(serie),
-            ]),
-          )
-        ],
-      ),
-    );
+        backgroundColor: Color.fromARGB(255, 19, 19, 19),
+        body: CustomScrollView(
+          slivers: <Widget>[
+            crearAppBar(serie),
+            SliverList(
+              delegate: SliverChildListDelegate([
+                SizedBox(
+                  height: 10.0,
+                ),
+                posterTitulo(context, serie),
+                _descripcion(serie),
+                _youtubeTrailer(context, serie),
+                _crearCasting(serie),
+                _similarMovies(serie),
+              ]),
+            )
+          ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          splashColor: Color.fromARGB(255, 37, 5, 99),
+          backgroundColor: Color.fromARGB(225, 241, 36, 36),
+          child: Icon(
+            Icons.home,
+          ),
+          onPressed: () {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                'home', (Route<dynamic> route) => false);
+          },
+        ));
   }
 
   Widget crearAppBar(Serie serie) {
@@ -49,7 +59,6 @@ class SerieDetalle extends StatelessWidget {
             style: TextStyle(color: Colors.white, fontSize: 16.0)),
         background: Image(
           image: NetworkImage(serie.getBackgroundImg()),
-          
           fit: BoxFit.cover,
         ),
       ),
@@ -144,7 +153,6 @@ class SerieDetalle extends StatelessWidget {
             borderRadius: BorderRadius.circular(20.0),
             child: Image(
               image: NetworkImage(actor.getFoto()),
-             
               height: 150.0,
               fit: BoxFit.cover,
             ),
@@ -164,8 +172,6 @@ class SerieDetalle extends StatelessWidget {
             .pushNamed('actorserie', arguments: {
           'serie': serie,
           'actor': actor,
-        
-
         });
       },
     );

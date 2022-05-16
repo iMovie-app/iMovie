@@ -33,6 +33,17 @@ class ActorDetalleSerie extends StatelessWidget {
               ),
             ]))
           ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          splashColor: Color.fromARGB(255, 37, 5, 99),
+          backgroundColor: Color.fromARGB(225, 241, 36, 36),
+          child: Icon(
+            Icons.home,
+          ),
+          onPressed: () {
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                'home', (Route<dynamic> route) => false);
+          },
         ));
   }
 
@@ -81,7 +92,6 @@ class ActorDetalleSerie extends StatelessWidget {
               snapshot.data,
               textAlign: TextAlign.justify,
               style: Theme.of(context).textTheme.bodyText2,
-              
             ),
           );
         } else {

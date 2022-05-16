@@ -1,5 +1,8 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 
+import 'dart:ui';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:peliculas_app/src/models/actores_model.dart';
 import 'package:peliculas_app/src/models/pelicula_model.dart';
@@ -17,23 +20,35 @@ class ActorDetalle extends StatelessWidget {
     final Serie? serie = arguments['serie'];
 
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 19, 19, 19),
-        body: CustomScrollView(
-          slivers: <Widget>[
-            PeliculaDetalle().crearAppBar(pelicula),
-            SliverList(
-                delegate: SliverChildListDelegate([
-              const SizedBox(height: 10.0),
-              _character(context, actor),
-              _posterActor(context, actor),
-              _biography(actor),
-              _swiperTarjetas(actor.id),
-              SizedBox(
-                height: 20.0,
-              ),
-            ]))
-          ],
-        ));
+      backgroundColor: Color.fromARGB(255, 19, 19, 19),
+      body: CustomScrollView(
+        slivers: <Widget>[
+          PeliculaDetalle().crearAppBar(pelicula),
+          SliverList(
+              delegate: SliverChildListDelegate([
+            const SizedBox(height: 10.0),
+            _character(context, actor),
+            _posterActor(context, actor),
+            _biography(actor),
+            _swiperTarjetas(actor.id),
+            SizedBox(
+              height: 20.0,
+            ),
+          ]))
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        splashColor: Color.fromARGB(255, 37, 5, 99),
+        backgroundColor: Color.fromARGB(225, 241, 36, 36),
+        child: Icon(
+          Icons.home,
+        ),
+        onPressed: () {
+          Navigator.of(context)
+              .pushNamedAndRemoveUntil('home', (Route<dynamic> route) => false);
+        },
+      ),
+    );
   }
 
   Widget _crearAppbar(Actor actor) {
