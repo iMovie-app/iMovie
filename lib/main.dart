@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           'actorserie': (BuildContext context) => ActorDetalleSerie(),
         },
         theme: ThemeData(
-            backgroundColor: const Color.fromARGB(255, 19, 19, 19)));
             textTheme: TextThemes.getTextTheme(),
+            backgroundColor: const Color.fromARGB(255, 19, 19, 19)));
   }
 }
