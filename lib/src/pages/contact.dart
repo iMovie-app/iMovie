@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:peliculas_app/src/widgets/fondo_homes.dart';
 import 'package:peliculas_app/src/widgets/menu_drawer.dart';
@@ -33,12 +35,6 @@ class Contact extends StatelessWidget {
                   SizedBox(
                     height: 20.0,
                   ),
-                  posterContactLeft(
-                      context,
-                      AssetImage("assets/img/flash.png"),
-                      "Miguel Pérez Larren",
-                      "linkedin.com/in/miguel-pérez-larrén-5bb5b2123/",
-                      "github.com/miguelperezlarren")
                 ]),
               )
             ],
@@ -149,4 +145,16 @@ Widget posterContactRigth(BuildContext context, AssetImage imagen,
       ),
     ),
   );
+}
+
+_launchURL(String url) async {
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
+Future<bool> launchUrlString(String url) async {
+  return await launch(url, forceSafariVC: false, forceWebView: false);
 }

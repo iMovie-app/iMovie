@@ -1,4 +1,4 @@
-package es.olimpo.peliculas_app;
+package es.olimpo.imovie;
 
 import io.flutter.embedding.android.FlutterActivity;
 
