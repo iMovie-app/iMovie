@@ -4,9 +4,6 @@
 
 Proyecto creado por dos desarrolladores junior, con la intención de aprender una tecnología que ven apasionante como es Flutter.
 
-## OBJETO
-
-El siguiente manual se elabora con el fin de poder brindar al usuario final un manejo y conocimiento adecuado de la aplicación, facilitando la navegación dentro de sus Funciones con pantallazos intuitivos para una mejor comprensión
 
 ## DESCRIPCIÓN DE LA APLICACIÓN
 
