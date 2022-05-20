@@ -56,7 +56,7 @@ Esta página muestra  información de la película seleccionada. En la siguient
 
 La siguiente imagen muestra la 2ª parte del detalle de la película al hacer scroll:
 
-![Untitled6](documents/readmeImages/Untitled 6.png)
+![Untitled6](documents/readmeImages/Untitled6.png)
 
 **Las películas similares** es un carrusel que ofrece películas similares a la película actual. Al pulsar sobre cualquiera de ellas nos llevaría a su detalle con su información correspondiente.
 
