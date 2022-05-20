@@ -46,7 +46,7 @@ Podemos desplazarnos por el carrusel y al pulsar en cualquiera de ellas se nos a
 
 El buscador se utiliza para buscar películas por título. Es predictivo, va dando resultado según se va escribiendo. Al pulsar en cualquiera de los resultados abrirá la página con el detalle de la película.
 
-![Untitled 4](documents/readmeImages/Untitled 4.png)
+![Untitled 4](documents/readmeImages/Untitled4.png)
 
 ## PÁGINA DE DETALLE DE PELÍCULA.
 
