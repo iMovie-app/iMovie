@@ -1,6 +1,6 @@
 # iMovie
 
-![UntitledTitle.png](documents\readmeImages\UntitledTitle.png)
+![UntitledTitle.png](documents/readmeImages/UntitledTitle.png)
 
 Proyecto creado por dos desarrolladores junior, con la intención de aprender una tecnología que ven apasionante como es Flutter.
 
@@ -22,21 +22,21 @@ Tras instalar la aplicación aparecerá un icono similar a la imagen siguiente e
 
 **iMovie**
 
-![Untitled](documents\readmeImages\Untitled.png)
+![Untitled](documents/readmeImages/Untitled.png)
 
 ## PÁGINA DE INICIO
 
-![Untitled1](documents\readmeImages\Untitled1.png)
+![Untitled1](documents/readmeImages/Untitled1.png)
 
 ## MENÚ DESPLEGABLE
 
 En las pantallas dónde esté disponible este botón, pulsar sobre el símbolo de Menú dará acceso directo a las páginas principales de la aplicación como se muestra en la siguiente imagen:
 
-![Untitled2](documents\readmeImages\Untitled2.png)
+![Untitled2](documents/readmeImages/Untitled2.png)
 
 ## PÁGINA DE INFÓRMACIÓN DE PELÍCULAS
 
-![Untitled3](documents\readmeImages\Untitled3.png)
+![Untitled3](documents/readmeImages/Untitled3.png)
 
 Esta página contiene información sobre películas en cartelera y películas populares en la actualidad.
 
@@ -46,17 +46,17 @@ Podemos desplazarnos por el carrusel y al pulsar en cualquiera de ellas se nos a
 
 El buscador se utiliza para buscar películas por título. Es predictivo, va dando resultado según se va escribiendo. Al pulsar en cualquiera de los resultados abrirá la página con el detalle de la película.
 
-![Untitled 4](documents\readmeImages\Untitled 4.png)
+![Untitled 4](documents/readmeImages/Untitled 4.png)
 
 ## PÁGINA DE DETALLE DE PELÍCULA.
 
 Esta página muestra  información de la película seleccionada. En la siguiente imagen se muestra la primera parte del detalle de la película:
 
-![Untitled5](documents\readmeImages\Untitled5.png)
+![Untitled5](documents/readmeImages/Untitled5.png)
 
 La siguiente imagen muestra la 2ª parte del detalle de la película al hacer scroll:
 
-![Untitled6](documents\readmeImages\Untitled 6.png)
+![Untitled6](documents/readmeImages/Untitled 6.png)
 
 **Las películas similares** es un carrusel que ofrece películas similares a la película actual. Al pulsar sobre cualquiera de ellas nos llevaría a su detalle con su información correspondiente.
 
@@ -66,11 +66,11 @@ La siguiente imagen muestra la 2ª parte del detalle de la película al hacer sc
 
 Esta página muestra información del actor/actriz seleccionados. En la siguiente imagen se muestra la primera parte del detalle:
 
-![Untitled7](documents\readmeImages\Untitled7.png)
+![Untitled7](documents/readmeImages/Untitled7.png)
 
 La siguiente imagen muestra la 2ª parte del detalle del actor al hacer scroll:
 
-![Untitled8](documents\readmeImages\Untitled8.png)
+![Untitled8](documents/readmeImages/Untitled8.png)
 
 **La filmografía** son las películas en las que ha participado el actor. Al pulsar sobre cualquiera de ellas nos llevaría a la página de detalle de la película.
 
@@ -102,4 +102,4 @@ Esta página muestra información del actor/actriz seleccionados.
 
 Esta página contiene accesos directos a páginas externas personales de los desarrolladores, para resolución de cualquier tipo de incidencia con la aplicación o para resolver dudas sobre programación, lenguajes y herramientas utilizados, etc. Al pulsar en cualquiera de los enlaces se abrirá la aplicación o navegador del dispositivo para visualizarla.
 
-![Untitled9](documents\readmeImages\Untitled9.png)
+![Untitled9](documents/readmeImages/Untitled9.png)
