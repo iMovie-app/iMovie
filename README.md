@@ -26,17 +26,17 @@ Tras instalar la aplicación aparecerá un icono similar a la imagen siguiente e
 
 ## PÁGINA DE INICIO
 
-![Untitled 1](documents\readmeImages\Untitled 1.png)
+![Untitled1](documents\readmeImages\Untitled1.png)
 
 ## MENÚ DESPLEGABLE
 
 En las pantallas dónde esté disponible este botón, pulsar sobre el símbolo de Menú dará acceso directo a las páginas principales de la aplicación como se muestra en la siguiente imagen:
 
-![Untitled 2](documents\readmeImages\Untitled 2.png)
+![Untitled2](documents\readmeImages\Untitled2.png)
 
 ## PÁGINA DE INFÓRMACIÓN DE PELÍCULAS
 
-![Untitled 3](documents\readmeImages\Untitled 3.png)
+![Untitled3](documents\readmeImages\Untitled3.png)
 
 Esta página contiene información sobre películas en cartelera y películas populares en la actualidad.
 
@@ -52,11 +52,11 @@ El buscador se utiliza para buscar películas por título. Es predictivo, va dan
 
 Esta página muestra  información de la película seleccionada. En la siguiente imagen se muestra la primera parte del detalle de la película:
 
-![Untitled 5](documents\readmeImages\Untitled 5.png)
+![Untitled5](documents\readmeImages\Untitled5.png)
 
 La siguiente imagen muestra la 2ª parte del detalle de la película al hacer scroll:
 
-![Untitled 6](documents\readmeImages\Untitled 6.png)
+![Untitled6](documents\readmeImages\Untitled 6.png)
 
 **Las películas similares** es un carrusel que ofrece películas similares a la película actual. Al pulsar sobre cualquiera de ellas nos llevaría a su detalle con su información correspondiente.
 
@@ -66,11 +66,11 @@ La siguiente imagen muestra la 2ª parte del detalle de la película al hacer sc
 
 Esta página muestra información del actor/actriz seleccionados. En la siguiente imagen se muestra la primera parte del detalle:
 
-![Untitled 7](documents\readmeImages\Untitled 7.png)
+![Untitled7](documents\readmeImages\Untitled7.png)
 
 La siguiente imagen muestra la 2ª parte del detalle del actor al hacer scroll:
 
-![Untitled 8](documents\readmeImages\Untitled 8.png)
+![Untitled8](documents\readmeImages\Untitled8.png)
 
 **La filmografía** son las películas en las que ha participado el actor. Al pulsar sobre cualquiera de ellas nos llevaría a la página de detalle de la película.
 
@@ -102,4 +102,4 @@ Esta página muestra información del actor/actriz seleccionados.
 
 Esta página contiene accesos directos a páginas externas personales de los desarrolladores, para resolución de cualquier tipo de incidencia con la aplicación o para resolver dudas sobre programación, lenguajes y herramientas utilizados, etc. Al pulsar en cualquiera de los enlaces se abrirá la aplicación o navegador del dispositivo para visualizarla.
 
-![Untitled 9](documents\readmeImages\Untitled 9.png)
+![Untitled9](documents\readmeImages\Untitled9.png)
